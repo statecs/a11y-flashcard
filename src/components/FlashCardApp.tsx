@@ -90,6 +90,22 @@ const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview }) => {
     cardRef.current?.focus();
   }, [currentIndex]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        prevCard();
+      } else if (event.key === 'ArrowRight') {
+        nextCard();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);  // Empty dependency array means this effect runs once on mount and clean up on unmount
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <h1 className="text-3xl font-bold mb-8">{title}</h1>
