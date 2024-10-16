@@ -1,14 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCcw, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface FlashcardData {
   question: string;
   answer: string;
 }
 
+interface OverviewData {
+  model: string;
+  description: string;
+}
+
 interface FlashcardProps {
   cards: FlashcardData[];
   title: string;
+  overview?: OverviewData[];
 }
 
 const FlashcardComponent: React.FC<{ card: FlashcardData; flipped: boolean; onClick: () => void }> = ({ card, flipped, onClick }) => (
@@ -34,7 +40,33 @@ const FlashcardComponent: React.FC<{ card: FlashcardData; flipped: boolean; onCl
   </div>
 );
 
-const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title }) => {
+const OverviewDropdown: React.FC<{ overview: OverviewData[] }> = ({ overview }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="w-full max-w-lg mt-6">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex justify-between items-center"
+      >
+        <span>Show Models Overview</span>
+        {isOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+      </button>
+      {isOpen && (
+        <div className="mt-2 bg-white rounded-lg shadow-md p-4">
+          {overview.map((item, index) => (
+            <div key={index} className="mb-4">
+              <h3 className="font-bold text-lg">{item.model}</h3>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [flipped, setFlipped] = useState<boolean>(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -92,6 +124,7 @@ const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title }) => {
         </button>
       </div>
       <p className="mt-4 text-gray-600" aria-live="polite">Card {currentIndex + 1} of {cards.length}</p>
+      {overview && <OverviewDropdown overview={overview} />}
     </div>
   );
 };

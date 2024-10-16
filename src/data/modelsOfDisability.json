@@ -1,25 +1,55 @@
 {
-    "title": "Models of Disability",
-    "cards": [
-      {
-        "question": "Which model of disability may inspire donations but can be condescending to individuals with disabilities?",
-        "answer": "The Charity model"
-      },
-      {
-        "question": "In which model would a Deaf person view their deafness as a cultural gain rather than an impairment?",
-        "answer": "The Social Identity or Cultural Affiliation model"
-      },
-      {
-        "question": "Which model focuses on an individual's ability to participate in work?",
-        "answer": "The Economic model"
-      },
-      {
-        "question": "Which model provides a comprehensive perspective recognizing the interplay of biology, psychology, and social/environmental factors?",
-        "answer": "The Biopsychosocial model"
-      },
-      {
-        "question": "True or False: Assistive technologies like screen readers align closely with the Functional Solutions model.",
-        "answer": "True"
-      }
-    ]
-  }
+  "title": "Models of Disability",
+  "cards": [
+    {
+      "question": "Which model of disability may inspire donations but can be condescending to individuals with disabilities?",
+      "answer": "The Charity model"
+    },
+    {
+      "question": "In which model would a Deaf person view their deafness as a cultural gain rather than an impairment?",
+      "answer": "The Social Identity or Cultural Affiliation model"
+    },
+    {
+      "question": "Which model focuses on an individual's ability to participate in work?",
+      "answer": "The Economic model"
+    },
+    {
+      "question": "Which model provides a comprehensive perspective recognizing the interplay of biology, psychology, and social/environmental factors?",
+      "answer": "The Biopsychosocial model"
+    },
+    {
+      "question": "True or False: Assistive technologies like screen readers align closely with the Functional Solutions model.",
+      "answer": "True"
+    }
+  ],
+  "overview": [
+    {
+      "model": "Medical Model",
+      "description": "Views the impairment as the problem. Disability is an attribute of the person's body being broken, imperfect, or otherwise not able to function in society."
+    },
+    {
+      "model": "Social Model",
+      "description": "Views the structures of society as the problem. Disability is not an attribute of a person, but a complex collection of conditions, many of which are created by the social environment."
+    },
+    {
+      "model": "Biopsychosocial Model",
+      "description": "Integrates the medical and social models. Synthesizes the different perspectives of health: biological, individual, social, and environmental."
+    },
+    {
+      "model": "Economic Model",
+      "description": "Defines disability by a person's inability to participate in work. It also assesses the degree to which impairment affects an individual's productivity and the economic consequences for the individual, employer, and the state."
+    },
+    {
+      "model": "Functional Solutions Model",
+      "description": "A practical perspective that identifies the functional limitations due to disability, with the intent to create and promote solutions to overcome them."
+    },
+    {
+      "model": "Social Identity or Cultural Affiliation Model",
+      "description": "Refers to deriving one's personal identity from membership within a group of like-minded individuals. This model is most evident among people who are Deaf, due to their shared linguistic experience as sign language users."
+    },
+    {
+      "model": "Charity Model",
+      "description": "Regards people with disabilities as unfortunate and in need of assistance from the outside, with those providing charity viewed as benevolent contributors to a needy population."
+    }
+  ]
+}

@@ -60,7 +60,13 @@ const App: React.FC = () => (
       <Route path="/" element={<LandingPage />} />
       <Route 
         path="/chapter/models-of-disability" 
-        element={<FlashcardApp cards={modelsOfDisabilityData.cards} title={modelsOfDisabilityData.title} />} 
+        element={
+          <FlashcardApp 
+            cards={modelsOfDisabilityData.cards} 
+            title={modelsOfDisabilityData.title} 
+            overview={modelsOfDisabilityData.overview}
+          />
+        } 
       />
       <Route path="/chapter/:chapterId" element={<ChapterNotFound />} />
     </Routes>
