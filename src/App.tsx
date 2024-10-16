@@ -2,8 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import { BookOpen } from 'lucide-react';
 
-// Import the FlashcardApp component (assuming it's in a separate file)
-import ModelsOfDisability from './components/ModelsOfDisability';
+// Import the FlashcardApp component
+import FlashcardApp from './components/FlashCardApp';
+
+// Import JSON data
+import modelsOfDisabilityData from './data/modelsOfDisability.json';
 
 interface Chapter {
   id: string;
@@ -17,21 +20,12 @@ const chapters: Chapter[] = [
     title: 'Models of Disability',
     description: 'Learn about different theoretical models of disability through interactive flashcards.'
   },
-  {
-    id: 'accessibility-basics',
-    title: 'Accessibility Basics',
-    description: 'Understand the fundamentals of digital accessibility and inclusive design.'
-  },
-  {
-    id: 'assistive-technologies',
-    title: 'Assistive Technologies',
-    description: 'Explore various assistive technologies and their impact on daily life.'
-  }
+  // Add more chapters here as needed
 ];
 
 const LandingPage: React.FC = () => (
   <div className="min-h-screen bg-gray-100 p-8">
-    <h1 className="text-4xl font-bold mb-8 text-center">Learning Hub</h1>
+    <h1 className="text-4xl font-bold mb-8 text-center">Disability Studies Learning Hub</h1>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {chapters.map((chapter) => (
         <Link
@@ -64,7 +58,10 @@ const App: React.FC = () => (
   <Router>
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/chapter/models-of-disability" element={<ModelsOfDisability />} />
+      <Route 
+        path="/chapter/models-of-disability" 
+        element={<FlashcardApp cards={modelsOfDisabilityData.cards} title={modelsOfDisabilityData.title} />} 
+      />
       <Route path="/chapter/:chapterId" element={<ChapterNotFound />} />
     </Routes>
   </Router>

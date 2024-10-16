@@ -1,41 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 
-interface Flashcard {
+interface FlashcardData {
   question: string;
   answer: string;
 }
 
-const flashcards: Flashcard[] = [
-  {
-    question: "Which model of disability may inspire donations but can be condescending to individuals with disabilities?",
-    answer: "The Charity model"
-  },
-  {
-    question: "In which model would a Deaf person view their deafness as a cultural gain rather than an impairment?",
-    answer: "The Social Identity or Cultural Affiliation model"
-  },
-  {
-    question: "Which model focuses on an individual's ability to participate in work?",
-    answer: "The Economic model"
-  },
-  {
-    question: "Which model provides a comprehensive perspective recognizing the interplay of biology, psychology, and social/environmental factors?",
-    answer: "The Biopsychosocial model"
-  },
-  {
-    question: "True or False: Assistive technologies like screen readers align closely with the Functional Solutions model.",
-    answer: "True"
-  }
-];
-
 interface FlashcardProps {
-  card: Flashcard;
-  flipped: boolean;
-  onClick: () => void;
+  cards: FlashcardData[];
+  title: string;
 }
 
-const FlashcardComponent: React.FC<FlashcardProps> = ({ card, flipped, onClick }) => (
+const FlashcardComponent: React.FC<{ card: FlashcardData; flipped: boolean; onClick: () => void }> = ({ card, flipped, onClick }) => (
   <div 
     className={`w-full h-64 bg-white shadow-lg rounded-lg p-6 cursor-pointer transition-all duration-300 transform ${flipped ? 'rotate-y-180' : ''}`} 
     onClick={onClick}
@@ -58,18 +34,18 @@ const FlashcardComponent: React.FC<FlashcardProps> = ({ card, flipped, onClick }
   </div>
 );
 
-const ModelsOfDisability: React.FC = () => {
+const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [flipped, setFlipped] = useState<boolean>(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const nextCard = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % flashcards.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
     setFlipped(false);
   };
 
   const prevCard = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + flashcards.length) % flashcards.length);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + cards.length) % cards.length);
     setFlipped(false);
   };
 
@@ -84,10 +60,10 @@ const ModelsOfDisability: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <h1 className="text-3xl font-bold mb-8">Models of Disability</h1>
+      <h1 className="text-3xl font-bold mb-8">{title}</h1>
       <div className="w-full max-w-lg" ref={cardRef}>
         <FlashcardComponent 
-          card={flashcards[currentIndex]} 
+          card={cards[currentIndex]} 
           flipped={flipped} 
           onClick={() => setFlipped(!flipped)} 
         />
@@ -115,9 +91,9 @@ const ModelsOfDisability: React.FC = () => {
           <ChevronRight size={24} />
         </button>
       </div>
-      <p className="mt-4 text-gray-600" aria-live="polite">Card {currentIndex + 1} of {flashcards.length}</p>
+      <p className="mt-4 text-gray-600" aria-live="polite">Card {currentIndex + 1} of {cards.length}</p>
     </div>
   );
 };
 
-export default ModelsOfDisability;
+export default FlashcardApp;
