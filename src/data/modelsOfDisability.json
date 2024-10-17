@@ -116,8 +116,53 @@
     },
     {
       "question": "Which are examples of the strengths of the medical model? (Select two.)",
-      "options": ["A. Addresses the biological sources of disabilities", "B. Improves the lives of people with disabilities through societal change", "C. Accepts the person's disability completely, and uses it as a point of pride", "D. Provides clinical cures or medical management of disabilities" ],
+      "options": ["Addresses the biological sources of disabilities", "Improves the lives of people with disabilities through societal change", "Accepts the person's disability completely, and uses it as a point of pride", "Provides clinical cures or medical management of disabilities" ],
       "correctAnswers": [0, 3]
+    },
+    {
+      "question": "Which model recognizes that it is the collective responsibility of society to make the environmental changes needed for the full participation of people with disabilities?",
+      "options": ["Social Model", "Medical Model", "Charity Model", "Biopsychosocial model", "Functional Solutions Model", "Economic Model", "Social identity or cultural affiliation model"],
+      "correctAnswers": [0]
+    },
+    {
+      "question": "This model views disability as a problem of the body and seeks to cure or manage the condition.",
+      "options": ["Social Model", "Medical Model", "Charity Model", "Biopsychosocial model", "Functional Solutions Model", "Economic Model", "Social identity or cultural affiliation model"],
+      "correctAnswers": [1]
+    },
+    {
+      "question": "This model acknowledges that individuals with disabilities may have limitations that prevent them from earning a living.",
+      "options": ["Social Model", "Medical Model", "Charity Model", "Biopsychosocial model", "Functional Solutions Model", "Economic Model", "Social identity or cultural affiliation model"],
+      "correctAnswers": [5]
+    },
+    {
+      "question": "Disability is a restriction of the ability to perform an activity in the manner or within the range considered normal for a human being. Disabilities are descriptions of disturbances in function at the level of the person. What are the weaknesses associated with the definition of disability? (Select two.)",
+      "options": ["It downplays the embodied aspects of disabilities", "It leads to impractical and expensive products", "It treats disability as a problem or inherent characteristic of the individual", "It overlooks broader sociopolitical constraints from inaccessible environments"],
+      "correctAnswers": [2, 3]
+    },
+    {
+      "question": "Disability is not just a health problem. It is a complex phenomenon, reflecting the interaction between features of a person’s body and features of the society in which he or she lives. Overcoming the difficulties faced by people with disabilities requires interventions to remove environmental and social barriers. What are the strengths associated with the definition of disability? (Select three.)",
+      "options": ["It implies barriers and challenges experienced by people with disabilities are not inevitable", "It moves toward removing barriers that restrict life choices for disabled people", "It states impairments or differences should be fixed or changed by medical intervention", "It supports the idea that barriers are not just physical, but also involve attitudes of prejudice" ],
+      "correctAnswers": [0, 1, 3]
+    },
+    {
+      "question": "Disability is not just a health problem. It is a complex phenomenon, reflecting the interaction between features of a person’s body and features of the society in which he or she lives. Overcoming the difficulties faced by people with disabilities requires interventions to remove environmental and social barriers. Web accessibility is most closely aligned with this definition of disability?",
+      "options": ["True", "False" ],
+      "correctAnswers": [0]
+    },
+    {
+      "question": "A woman receives a disability insurance check after giving birth while she is on maternity leave.",
+      "options": ["Social Model", "Medical Model", "Charity Model", "Biopsychosocial model", "Functional Solutions Model", "Economic Model", "Social identity or cultural affiliation model"],
+      "correctAnswers": [5]
+    },
+    {
+      "question": "The ALS Ice Bucket Challenge raised millions of dollars for scientific research leading to meaningful breakthroughs in identifying and treating the disease.",
+      "options": ["Social Model", "Medical Model", "Charity Model", "Biopsychosocial model", "Functional Solutions Model", "Economic Model", "Social identity or cultural affiliation model"],
+      "correctAnswers": [2]
+    },
+    {
+      "question": "In order for a university student to receive an accommodation for more time on tests, she first had to provide documentation of the diagnosis of her disability to the school's disability services office.",
+      "options": ["Social Model", "Medical Model", "Charity Model", "Biopsychosocial model", "Functional Solutions Model", "Economic Model", "Social identity or cultural affiliation model"],
+      "correctAnswers": [1]
     }
   ]
 }
