@@ -25,19 +25,35 @@
   "overview": [
     {
       "category": "Auditory Disabilities",
-      "description": "Can hear sounds but sometimes not sufficiently to understand all speech, especially when there is background noise. This can include people using hearing aids."
+      "description": "Can hear sounds but sometimes not sufficiently to understand all speech, especially when there is background noise. This can include people using hearing aids.\n\nSubcategories include:\n• Deafness: The total or near total loss of hearing.\n• Hard of Hearing: Hearing loss ranging from mild to severe, retaining some useful hearing.\n• Central Auditory Processing Disorder: Inability to interpret, organize, or analyze what's heard.\n• Deaf-blindness: Includes both deafness and blindness. Most people who are deaf-blind retain some ability to hear and see."
     },
     {
       "category": "Cognitive Disabilities",
-      "description": "Involves neurodiversity and neurological disorders, as well as behavioral and mental health disorders that are not necessarily neurological. They may affect any part of the nervous system and impact how well people hear, move, see, speak, and understand information."
+      "description": "Involves neurodiversity and neurological disorders, as well as behavioral and mental health disorders that are not necessarily neurological. They may affect any part of the nervous system and impact how well people hear, move, see, speak, and understand information.\n\nSubcategories include:\n• Intellectual Disabilities: Significant limitations in intellectual functioning and social and practical skills.\n• Dyslexia: Impaired ability to read.\n• Dysgraphia: Difficulties with handwriting and other fine motor skills and a difficulty expressing oneself in written language.\n• Math and Computation: Disabilities that affect a person's ability to learn and communicate math. Includes dyscalculia, the inability to understand arithmetic and how to calculate.\n• Attention Deficit Hyperactivity Disorder: Developmental disorder characterized by inattention, hyperactivity, and impulsivity.\n• Autism Spectrum Disorder: Range of conditions characterized by impaired social behavior, communication and language, and a narrow range of interests and activities.\n• Non-verbal Learning Disability: Syndrome affecting social skills, sensory input, and making transitions."
     },
     {
       "category": "Physical Disabilities",
-      "description": "Sometimes called motor disabilities, include weakness and limitations of muscular control (such as involuntary movements including tremors, lack of coordination, or paralysis), limitations of sensation, joint disorders (such as arthritis), pain that impedes movement, and missing limbs."
+      "description": "Sometimes called motor disabilities, include weakness and limitations of muscular control (such as involuntary movements including tremors, lack of coordination, or paralysis), limitations of sensation, joint disorders (such as arthritis), pain that impedes movement, and missing limbs.\n\nSubcategories include:\n• Manual Dexterity / Fine Motor Control: Difficulty manipulating objects, writing, and dressing.\n• Ambulation: Difficulty walking independently with or without an assistive device.\n• Muscle Fatigue: Non-specific symptoms characterized by muscle weakness and fatigue.\n• Body Size or Shape: Disorders that affect a person's height, proportions, or shape."
     },
     {
       "category": "Visual Disabilities",
-      "description": "Can range from mild to severe or complete loss. Some people have reduced or lack of sensitivity to certain colors, or increased sensitivity to bright colors."
+      "description": "Can range from mild to severe or complete loss. Some people have reduced or lack of sensitivity to certain colors, or increased sensitivity to bright colors.\n\nSubcategories include:\n• Blindness: Nearly complete vision loss.\n• Color Blindness: Inability to distinguish certain color combinations.\n• Low Vision: Reduced vision that cannot be corrected with regular glasses, contact lenses, medicine, or surgery."
+    },
+    {
+      "category": "Speech Disabilities",
+      "description": "Affects a person's ability to produce speech sounds correctly or fluently, or problems with their voice or language.\n\nSubcategories include:\n• Articulation: Difficulty producing specific types of sounds.\n• Aphasia: Impaired ability to produce or understand speech. Also affects the ability to read or write.\n• No Speech: Inability to speak caused by damage to the brain, speech muscles, or due to emotional or psychological reasons."
+    },
+    {
+      "category": "Seizure Disabilities",
+      "description": "Involves recurrent, unprovoked seizures.\n\nSubcategories include:\n• General Seizure Disorders: Sudden, uncontrolled electrical disturbance in the brain that can cause changes in behavior, movements, feelings, and consciousness.\n• Photosensitive Epilepsy: Seizures triggered by patterns or flashing or flickering lights."
+    },
+    {
+      "category": "Psychological / Psychiatric Disabilities",
+      "description": "Mental health conditions that significantly affect a person's thinking, emotions, or behavior.\n\nSubcategories include:\n• Social Disabilities: Disorder that causes anxiety or fear in certain or all social situations.\n• Emotional Disabilities: Affect mood, the ability to make or sustain relationships, to behave appropriately, the ability to learn.\n• Behavioral Disabilities: Patterns of disruptive behaviors that last at least six months and cause problems in social situations, at home and at work or school."
+    },
+    {
+      "category": "Multiple / Compound Disabilities",
+      "description": "When more than one disability is present. Describes individuals with the most profound disabilities, often involving a combination of sensory, physical, cognitive, or psychological disabilities."
     }
   ],
   "quizQuestions": [
