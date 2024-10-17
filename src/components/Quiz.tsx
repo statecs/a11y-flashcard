@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 
 interface QuizQuestion {
   question: string;
@@ -15,6 +15,7 @@ interface RandomizedQuizQuestion extends QuizQuestion {
 interface QuizProps {
   questions: QuizQuestion[];
   title: string;
+  onBack: () => void;  // New prop for handling navigation back to start screen
 }
 
 // Fisher-Yates shuffle algorithm
@@ -37,7 +38,7 @@ const randomizeQuestion = (question: QuizQuestion): RandomizedQuizQuestion => {
   };
 };
 
-const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title }) => {
+const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack }) => {
   const [questions, setQuestions] = useState<RandomizedQuizQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -105,7 +106,16 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start p-4">
+      <div className="w-full max-w-lg mb-4">
+        <button
+          onClick={onBack}
+          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center"
+        >
+          <ArrowLeft size={24} className="mr-2" />
+          Back to Start
+        </button>
+      </div>
       <h1 className="text-3xl font-bold mb-8">{title} - Quiz</h1>
       <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold mb-4">Question {currentQuestion + 1} of {questions.length}</h2>

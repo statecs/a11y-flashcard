@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes, useNavigate } from 'react-router-dom';
 import { BookOpen } from 'lucide-react';
 
 // Import the FlashcardApp component
@@ -65,28 +65,51 @@ const ChapterNotFound: React.FC = () => (
   </div>
 );
 
+const QuizWrapper: React.FC = () => {
+  const navigate = useNavigate();
+  
+  const handleBack = () => {
+    navigate('/');
+  };
+
+  return (
+    <Quiz 
+      questions={modelsOfDisabilityData.quizQuestions} 
+      title={modelsOfDisabilityData.title}
+      onBack={handleBack}
+    />
+  );
+};
+
+const FlashcardWrapper: React.FC = () => {
+  const navigate = useNavigate();
+  
+  const handleBack = () => {
+    navigate('/');
+  };
+
+  return (
+    <FlashcardApp 
+      cards={modelsOfDisabilityData.cards} 
+      title={modelsOfDisabilityData.title} 
+      overview={modelsOfDisabilityData.overview}
+      onBack={handleBack}
+    />
+  );
+};
+
+
 const App: React.FC = () => (
     <Router>
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route 
         path="/chapter/models-of-disability/flashcards" 
-        element={
-          <FlashcardApp 
-            cards={modelsOfDisabilityData.cards} 
-            title={modelsOfDisabilityData.title} 
-            overview={modelsOfDisabilityData.overview}
-          />
-        } 
+        element={<FlashcardWrapper />}
       />
       <Route 
         path="/chapter/models-of-disability/quiz" 
-        element={
-          <Quiz 
-            questions={modelsOfDisabilityData.quizQuestions} 
-            title={modelsOfDisabilityData.title}
-          />
-        } 
+        element={<QuizWrapper />}
       />
       <Route path="/chapter/:chapterId" element={<ChapterNotFound />} />
     </Routes>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, RotateCcw, ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCcw, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
 
 interface FlashcardData {
   question: string;
@@ -15,6 +15,7 @@ interface FlashcardProps {
   cards: FlashcardData[];
   title: string;
   overview?: OverviewData[];
+  onBack: () => void;  // New prop for handling navigation back to start screen
 }
 
 const FlashcardComponent: React.FC<{ card: FlashcardData; flipped: boolean; onClick: () => void }> = ({ card, flipped, onClick }) => (
@@ -66,7 +67,7 @@ const OverviewDropdown: React.FC<{ overview: OverviewData[] }> = ({ overview }) 
   );
 };
 
-const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview }) => {
+const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview, onBack }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [flipped, setFlipped] = useState<boolean>(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -107,7 +108,16 @@ const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview }) => {
   }, []);  // Empty dependency array means this effect runs once on mount and clean up on unmount
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start p-4">
+    <div className="w-full max-w-lg mb-4">
+      <button
+        onClick={onBack}
+        className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center"
+      >
+        <ArrowLeft size={24} className="mr-2" />
+        Back to Start
+      </button>
+    </div>
       <h1 className="text-3xl font-bold mb-8">{title}</h1>
       <div className="w-full max-w-lg" ref={cardRef}>
         <FlashcardComponent 
