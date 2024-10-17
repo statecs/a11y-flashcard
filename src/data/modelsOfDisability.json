@@ -20,6 +20,42 @@
     {
       "question": "True or False: Assistive technologies like screen readers align closely with the Functional Solutions model.",
       "answer": "True"
+    },
+    {
+      "question": "Name two strengths of the Medical model of disability.",
+      "answer": "1. Addresses the biological sources of disabilities. 2. Provides clinical cures or medical management of disabilities"
+    },
+    {
+      "question": "Which model recognizes society's collective responsibility to make environmental changes for full participation of people with disabilities?",
+      "answer": "The Social model"
+    },
+    {
+      "question": "Which model views disability as a problem of the body and seeks to cure or manage the condition?",
+      "answer": "The Medical model"
+    },
+    {
+      "question": "A woman receives disability insurance during maternity leave. Which model does this scenario best represent?",
+      "answer": "The Economic model"
+    },
+    {
+      "question": "The ALS Ice Bucket Challenge raised millions for research. Which model does this represent?",
+      "answer": "The Charity model"
+    },
+    {
+      "question": "A student needs to provide medical documentation to receive accommodations at university. Which model does this represent?",
+      "answer": "The Medical model"
+    },
+    {
+      "question": "What are two weaknesses of defining disability as 'a restriction of the ability to perform an activity in the manner or within the range considered normal for a human being'?",
+      "answer": "1. It treats disability as a problem or inherent characteristic of the individual. 2. It overlooks broader sociopolitical constraints from inaccessible environments"
+    },
+    {
+      "question": "Name three strengths of defining disability as 'a complex phenomenon, reflecting the interaction between features of a person's body and features of the society in which he or she lives'?",
+      "answer": "1. It implies barriers and challenges experienced by people with disabilities are not inevitable. 2. It moves toward removing barriers that restrict life choices for disabled people. 3. It supports the idea that barriers are not just physical, but also involve attitudes of prejudice"
+    },
+    {
+      "question": "True or False: Web accessibility is most closely aligned with the social model of disability.",
+      "answer": "True"
     }
   ],
   "overview": [
