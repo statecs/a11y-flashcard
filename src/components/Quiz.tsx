@@ -4,18 +4,18 @@ import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 interface QuizQuestion {
   question: string;
   options: string[];
-  correctAnswer: number;
+  correctAnswers: number[];
 }
 
 interface RandomizedQuizQuestion extends QuizQuestion {
   randomizedOptions: string[];
-  correctAnswerIndex: number;
+  correctAnswerIndices: number[];
 }
 
 interface QuizProps {
   questions: QuizQuestion[];
   title: string;
-  onBack: () => void;  // New prop for handling navigation back to start screen
+  onBack: () => void;
 }
 
 // Fisher-Yates shuffle algorithm
@@ -30,18 +30,20 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 const randomizeQuestion = (question: QuizQuestion): RandomizedQuizQuestion => {
   const randomizedOptions = shuffleArray(question.options);
-  const correctAnswerIndex = randomizedOptions.indexOf(question.options[question.correctAnswer]);
+  const correctAnswerIndices = question.correctAnswers.map(
+    index => randomizedOptions.indexOf(question.options[index])
+  );
   return {
     ...question,
     randomizedOptions,
-    correctAnswerIndex
+    correctAnswerIndices
   };
 };
 
 const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack }) => {
   const [questions, setQuestions] = useState<RandomizedQuizQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
 
@@ -52,15 +54,29 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
   }, [initialQuestions]);
 
   const handleAnswerSelect = (index: number) => {
-    setSelectedAnswer(index);
+    setSelectedAnswers(prev => {
+      if (prev.includes(index)) {
+        return prev.filter(i => i !== index);
+      } else {
+        return [...prev, index];
+      }
+    });
   };
 
   const handleNext = () => {
-    if (selectedAnswer !== null) {
-      if (selectedAnswer === questions[currentQuestion].correctAnswerIndex) {
-        setScore(score + 1);
-      }
-      setSelectedAnswer(null);
+    if (selectedAnswers.length > 0) {
+      const currentQuestionData = questions[currentQuestion];
+      const correctCount = selectedAnswers.filter(answer => 
+        currentQuestionData.correctAnswerIndices.includes(answer)
+      ).length;
+      const incorrectCount = selectedAnswers.length - correctCount;
+      const totalCorrect = currentQuestionData.correctAnswerIndices.length;
+      
+      // Calculate score: 1 point for all correct, minus 0.5 for each incorrect
+      const questionScore = Math.max(0, correctCount - (incorrectCount * 0.5));
+      setScore(score + questionScore);
+
+      setSelectedAnswers([]);
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
@@ -72,7 +88,7 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
-      setSelectedAnswer(null);
+      setSelectedAnswers([]);
     }
   };
 
@@ -81,7 +97,7 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
     const randomizedQuestions = shuffledQuestions.map(randomizeQuestion);
     setQuestions(randomizedQuestions);
     setCurrentQuestion(0);
-    setSelectedAnswer(null);
+    setSelectedAnswers([]);
     setScore(0);
     setQuizCompleted(false);
   };
@@ -90,12 +106,18 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
     return (
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
         <h1 className="text-3xl font-bold mb-8">{title} - Quiz Completed</h1>
-        <p className="text-xl mb-4">Your score: {score} out of {questions.length}</p>
+        <p className="text-xl mb-4">Your score: {score.toFixed(1)} out of {questions.length}</p>
         <button
           onClick={restartQuiz}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
         >
           Restart Quiz
+        </button>
+        <button
+          onClick={onBack}
+          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Back to Start
         </button>
       </div>
     );
@@ -126,7 +148,7 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
               key={index}
               onClick={() => handleAnswerSelect(index)}
               className={`w-full text-left p-2 rounded ${
-                selectedAnswer === index ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
+                selectedAnswers.includes(index) ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
               }`}
             >
               {option}
@@ -144,7 +166,7 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
         </button>
         <button
           onClick={handleNext}
-          disabled={selectedAnswer === null}
+          disabled={selectedAnswers.length === 0}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
         >
           <ChevronRight size={24} />

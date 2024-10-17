@@ -92,27 +92,32 @@
     {
       "question": "While this model may inspire people to donate time or resources to assist those with disabilities, it can often be condescending to those individuals by portraying them as objects of pity.",
       "options": [ "Charity Model", "Medical Model", "Social Model", "Biopsychosocial Model", "Economic Model", "Functional Solutions Model", "Social Identity or Cultural Affiliation Model"],
-      "correctAnswer": 0
+      "correctAnswers": [0]
     },
     {
       "question": "Which model is illustrated by a person who is Deaf (capital D) viewing themselves as gaining from deafness rather than being impaired by it?",
       "options": ["Medical Model", "Social acceptance model", "Social identity or cultural affiliation model", "Biopsychosocial model"],
-      "correctAnswer": 2
+      "correctAnswers": [2]
     },
     {
       "question": "Which model focuses on the ability of the individual to participate in work?",
       "options": ["Economic Model", "Biopsychosocial Model", "Charity Model", "Social Identity Model"],
-      "correctAnswer": 0
+      "correctAnswers": [0]
     },
     {
       "question": "This model provides a comprehensive perspective that recognizes the complex interplay of biology, psychology, and social and environmental factors.",
       "options": ["Social Model", "Medical Model", "Biopsychosocial model", "Functional Solutions Model", "Economic Model", "Social identity or cultural affiliation model"],
-      "correctAnswer": 2
+      "correctAnswers": [2]
     },
     {
       "question": "Assistive technologies such as screen readers and voice dictation are most closely aligned with the functional solutions model.",
       "options": ["True", "False"],
-      "correctAnswer": 0
+      "correctAnswers": [0]
+    },
+    {
+      "question": "Which are examples of the strengths of the medical model? (Select two.)",
+      "options": ["A. Addresses the biological sources of disabilities", "B. Improves the lives of people with disabilities through societal change", "C. Accepts the person's disability completely, and uses it as a point of pride", "D. Provides clinical cures or medical management of disabilities" ],
+      "correctAnswers": [0, 3]
     }
   ]
 }
