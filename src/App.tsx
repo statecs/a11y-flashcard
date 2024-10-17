@@ -4,6 +4,7 @@ import { BookOpen } from 'lucide-react';
 
 // Import the FlashcardApp component
 import FlashcardApp from './components/FlashCardApp';
+import Quiz from './components/Quiz';
 
 // Import JSON data
 import modelsOfDisabilityData from './data/modelsOfDisability.json';
@@ -25,20 +26,30 @@ const chapters: Chapter[] = [
 
 const LandingPage: React.FC = () => (
   <div className="min-h-screen bg-gray-100 p-8">
-    <h1 className="text-4xl font-bold mb-8 text-center">Disability Studies Learning Hub</h1>
+    <h1 className="text-4xl font-bold mb-8 text-center">A11y Learning Hub</h1>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {chapters.map((chapter) => (
-        <Link
-          key={chapter.id}
-          to={`/chapter/${chapter.id}`}
-          className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
-        >
+    {chapters.map((chapter) => (
+        <div key={chapter.id} className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-semibold mb-2 flex items-center">
             <BookOpen className="mr-2" size={24} />
             {chapter.title}
           </h2>
-          <p className="text-gray-600">{chapter.description}</p>
-        </Link>
+          <p className="text-gray-600 mb-4">{chapter.description}</p>
+          <div className="flex space-x-4">
+            <Link
+              to={`/chapter/${chapter.id}/flashcards`}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Flashcards
+            </Link>
+            <Link
+              to={`/chapter/${chapter.id}/quiz`}
+              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Quiz
+            </Link>
+          </div>
+        </div>
       ))}
     </div>
   </div>
@@ -55,16 +66,25 @@ const ChapterNotFound: React.FC = () => (
 );
 
 const App: React.FC = () => (
-  <Router>
+    <Router>
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route 
-        path="/chapter/models-of-disability" 
+        path="/chapter/models-of-disability/flashcards" 
         element={
           <FlashcardApp 
             cards={modelsOfDisabilityData.cards} 
             title={modelsOfDisabilityData.title} 
             overview={modelsOfDisabilityData.overview}
+          />
+        } 
+      />
+      <Route 
+        path="/chapter/models-of-disability/quiz" 
+        element={
+          <Quiz 
+            questions={modelsOfDisabilityData.quizQuestions} 
+            title={modelsOfDisabilityData.title}
           />
         } 
       />

@@ -87,5 +87,32 @@
       "model": "Charity Model",
       "description": "Regards people with disabilities as unfortunate and in need of assistance from the outside, with those providing charity viewed as benevolent contributors to a needy population."
     }
+  ],
+  "quizQuestions": [
+    {
+      "question": "Which model of disability views the impairment as the problem?",
+      "options": ["Social Model", "Medical Model", "Biopsychosocial Model", "Economic Model"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Which model focuses on the structures of society as the problem?",
+      "options": ["Medical Model", "Charity Model", "Social Model", "Functional Solutions Model"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Which model integrates the medical and social models?",
+      "options": ["Economic Model", "Biopsychosocial Model", "Charity Model", "Social Identity Model"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Which model defines disability by a person's inability to participate in work?",
+      "options": ["Social Model", "Medical Model", "Functional Solutions Model", "Economic Model"],
+      "correctAnswer": 3
+    },
+    {
+      "question": "Which model is most evident among people who are Deaf?",
+      "options": ["Medical Model", "Economic Model", "Charity Model", "Social Identity or Cultural Affiliation Model"],
+      "correctAnswer": 3
+    }
   ]
 }
