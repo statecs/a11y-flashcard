@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface QuizQuestion {
@@ -12,11 +12,26 @@ interface QuizProps {
   title: string;
 }
 
-const Quiz: React.FC<QuizProps> = ({ questions, title }) => {
+// Fisher-Yates shuffle algorithm
+const shuffleArray = (array: QuizQuestion[]): QuizQuestion[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
+const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title }) => {
+  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
+
+  useEffect(() => {
+    setQuestions(shuffleArray(initialQuestions));
+  }, [initialQuestions]);
 
   const handleAnswerSelect = (index: number) => {
     setSelectedAnswer(index);
@@ -44,6 +59,7 @@ const Quiz: React.FC<QuizProps> = ({ questions, title }) => {
   };
 
   const restartQuiz = () => {
+    setQuestions(shuffleArray(initialQuestions));
     setCurrentQuestion(0);
     setSelectedAnswer(null);
     setScore(0);
@@ -63,6 +79,10 @@ const Quiz: React.FC<QuizProps> = ({ questions, title }) => {
         </button>
       </div>
     );
+  }
+
+  if (questions.length === 0) {
+    return <div>Loading...</div>;
   }
 
   return (
