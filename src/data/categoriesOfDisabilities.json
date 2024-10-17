@@ -105,6 +105,16 @@
       "explanation": "Deaf-blindness is a rare condition in which an individual has combined hearing and vision loss, thus limiting access to both auditory and visual information."
     },
     {
+      "question": "A student who has difficulty with communication, difficulty with social interactions, obsessive interests, and repetitive behaviors can be characterized as having which cognitive disability?",
+      "options": [
+        "Autism Spectrum Disorder",
+        "Anxiety",
+        "Dyslexia",
+        "Dementia"
+      ],
+      "correctAnswers": [0]
+    },
+    {
       "question": "All people with auditory disabilities know sign language.",
       "options": [
         "True",
