@@ -7,13 +7,18 @@ interface QuizQuestion {
   correctAnswer: number;
 }
 
+interface RandomizedQuizQuestion extends QuizQuestion {
+  randomizedOptions: string[];
+  correctAnswerIndex: number;
+}
+
 interface QuizProps {
   questions: QuizQuestion[];
   title: string;
 }
 
 // Fisher-Yates shuffle algorithm
-const shuffleArray = (array: QuizQuestion[]): QuizQuestion[] => {
+const shuffleArray = <T,>(array: T[]): T[] => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -22,15 +27,27 @@ const shuffleArray = (array: QuizQuestion[]): QuizQuestion[] => {
   return shuffled;
 };
 
+const randomizeQuestion = (question: QuizQuestion): RandomizedQuizQuestion => {
+  const randomizedOptions = shuffleArray(question.options);
+  const correctAnswerIndex = randomizedOptions.indexOf(question.options[question.correctAnswer]);
+  return {
+    ...question,
+    randomizedOptions,
+    correctAnswerIndex
+  };
+};
+
 const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title }) => {
-  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  const [questions, setQuestions] = useState<RandomizedQuizQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
 
   useEffect(() => {
-    setQuestions(shuffleArray(initialQuestions));
+    const shuffledQuestions = shuffleArray(initialQuestions);
+    const randomizedQuestions = shuffledQuestions.map(randomizeQuestion);
+    setQuestions(randomizedQuestions);
   }, [initialQuestions]);
 
   const handleAnswerSelect = (index: number) => {
@@ -39,7 +56,7 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title }) => {
 
   const handleNext = () => {
     if (selectedAnswer !== null) {
-      if (selectedAnswer === questions[currentQuestion].correctAnswer) {
+      if (selectedAnswer === questions[currentQuestion].correctAnswerIndex) {
         setScore(score + 1);
       }
       setSelectedAnswer(null);
@@ -59,7 +76,9 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title }) => {
   };
 
   const restartQuiz = () => {
-    setQuestions(shuffleArray(initialQuestions));
+    const shuffledQuestions = shuffleArray(initialQuestions);
+    const randomizedQuestions = shuffledQuestions.map(randomizeQuestion);
+    setQuestions(randomizedQuestions);
     setCurrentQuestion(0);
     setSelectedAnswer(null);
     setScore(0);
@@ -92,7 +111,7 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title }) => {
         <h2 className="text-xl font-semibold mb-4">Question {currentQuestion + 1} of {questions.length}</h2>
         <p className="mb-4">{questions[currentQuestion].question}</p>
         <div className="space-y-2">
-          {questions[currentQuestion].options.map((option, index) => (
+          {questions[currentQuestion].randomizedOptions.map((option, index) => (
             <button
               key={index}
               onClick={() => handleAnswerSelect(index)}
