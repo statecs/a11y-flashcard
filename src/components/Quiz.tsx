@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 
-interface QuizQuestion {
+export interface QuizQuestion {
   question: string;
   options: string[];
   correctAnswers: number[];

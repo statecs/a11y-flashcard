@@ -1,27 +1,42 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes, useNavigate, useParams } from 'react-router-dom';
 import { BookOpen } from 'lucide-react';
 
-// Import the FlashcardApp component
 import FlashcardApp from './components/FlashCardApp';
-import Quiz from './components/Quiz';
+import Quiz, { QuizQuestion } from './components/Quiz';
 
-// Import JSON data
 import modelsOfDisabilityData from './data/modelsOfDisability.json';
+import categoriesOfDisabilitiesData from './data/categoriesOfDisabilities.json';
+
+interface FlexibleOverviewData {
+  [key: string]: string;
+}
 
 interface Chapter {
   id: string;
   title: string;
   description: string;
+  data: {
+    title: string;
+    cards: Array<{ question: string; answer: string }>;
+    overview: FlexibleOverviewData[];
+    quizQuestions: QuizQuestion[];
+  };
 }
 
 const chapters: Chapter[] = [
   {
     id: 'models-of-disability',
     title: 'Models of Disability',
-    description: 'Learn about different theoretical models of disability through interactive flashcards.'
+    description: 'Learn about different theoretical models of disability through interactive flashcards.',
+    data: modelsOfDisabilityData as Chapter['data']
   },
-  // Add more chapters here as needed
+  {
+    id: 'categories-of-disabilities',
+    title: 'Categories of Disabilities',
+    description: 'Learn about different disabilities through interactive flashcards and quiz',
+    data: categoriesOfDisabilitiesData as Chapter['data']
+  },
 ];
 
 const LandingPage: React.FC = () => (
@@ -67,15 +82,22 @@ const ChapterNotFound: React.FC = () => (
 
 const QuizWrapper: React.FC = () => {
   const navigate = useNavigate();
+  const { chapterId } = useParams<{ chapterId: string }>();
   
+  const chapter = chapters.find(c => c.id === chapterId);
+  
+  if (!chapter) {
+    return <ChapterNotFound />;
+  }
+
   const handleBack = () => {
     navigate('/');
   };
 
   return (
     <Quiz 
-      questions={modelsOfDisabilityData.quizQuestions} 
-      title={modelsOfDisabilityData.title}
+      questions={chapter.data.quizQuestions}
+      title={chapter.data.title}
       onBack={handleBack}
     />
   );
@@ -83,35 +105,41 @@ const QuizWrapper: React.FC = () => {
 
 const FlashcardWrapper: React.FC = () => {
   const navigate = useNavigate();
+  const { chapterId } = useParams<{ chapterId: string }>();
   
+  const chapter = chapters.find(c => c.id === chapterId);
+  
+  if (!chapter) {
+    return <ChapterNotFound />;
+  }
+
   const handleBack = () => {
     navigate('/');
   };
 
   return (
     <FlashcardApp 
-      cards={modelsOfDisabilityData.cards} 
-      title={modelsOfDisabilityData.title} 
-      overview={modelsOfDisabilityData.overview}
+      cards={chapter.data.cards}
+      title={chapter.data.title}
+      overview={chapter.data.overview}
       onBack={handleBack}
     />
   );
 };
 
-
 const App: React.FC = () => (
-    <Router>
+  <Router>
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route 
-        path="/chapter/models-of-disability/flashcards" 
+        path="/chapter/:chapterId/flashcards" 
         element={<FlashcardWrapper />}
       />
       <Route 
-        path="/chapter/models-of-disability/quiz" 
+        path="/chapter/:chapterId/quiz" 
         element={<QuizWrapper />}
       />
-      <Route path="/chapter/:chapterId" element={<ChapterNotFound />} />
+      <Route path="*" element={<ChapterNotFound />} />
     </Routes>
   </Router>
 );

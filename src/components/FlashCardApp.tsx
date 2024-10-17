@@ -6,16 +6,15 @@ interface FlashcardData {
   answer: string;
 }
 
-interface OverviewData {
-  model: string;
-  description: string;
+interface FlexibleOverviewData {
+  [key: string]: string;
 }
 
 interface FlashcardProps {
   cards: FlashcardData[];
   title: string;
-  overview?: OverviewData[];
-  onBack: () => void;  // New prop for handling navigation back to start screen
+  overview?: FlexibleOverviewData[];
+  onBack: () => void;
 }
 
 const FlashcardComponent: React.FC<{ card: FlashcardData; flipped: boolean; onClick: () => void }> = ({ card, flipped, onClick }) => (
@@ -41,7 +40,7 @@ const FlashcardComponent: React.FC<{ card: FlashcardData; flipped: boolean; onCl
   </div>
 );
 
-const OverviewDropdown: React.FC<{ overview: OverviewData[] }> = ({ overview }) => {
+const OverviewDropdown: React.FC<{ overview: FlexibleOverviewData[] }> = ({ overview }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

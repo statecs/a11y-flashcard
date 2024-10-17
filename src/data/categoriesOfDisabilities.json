@@ -1,0 +1,154 @@
+{
+  "title": "Categories of Disabilites",
+  "cards": [
+    {
+      "question": "What disability is characterized by difficulty understanding numbers and learning math facts?",
+      "answer": "Dyscalculia"
+    },
+    {
+      "question": "What reading disability is associated with difficulty in learning to read despite normal IQ?",
+      "answer": "Dyslexia"
+    },
+    {
+      "question": "What condition is characterized by distractibility, inattention, hyperactivity, and impulsivity?",
+      "answer": "Attention Deficit Hyperactivity Disorder (ADHD)"
+    },
+    {
+      "question": "What term describes a person with combined hearing and vision loss?",
+      "answer": "Deaf-blind"
+    },
+    {
+      "question": "What condition is characterized by difficulty with communication, social interactions, obsessive interests, and repetitive behaviors?",
+      "answer": "Autism Spectrum Disorder (ASD)"
+    }
+  ],
+  "overview": [
+    {
+      "category": "Auditory Disabilities",
+      "description": "Can hear sounds but sometimes not sufficiently to understand all speech, especially when there is background noise. This can include people using hearing aids."
+    },
+    {
+      "category": "Cognitive Disabilities",
+      "description": "Involves neurodiversity and neurological disorders, as well as behavioral and mental health disorders that are not necessarily neurological. They may affect any part of the nervous system and impact how well people hear, move, see, speak, and understand information."
+    },
+    {
+      "category": "Physical Disabilities",
+      "description": "Sometimes called motor disabilities, include weakness and limitations of muscular control (such as involuntary movements including tremors, lack of coordination, or paralysis), limitations of sensation, joint disorders (such as arthritis), pain that impedes movement, and missing limbs."
+    },
+    {
+      "category": "Visual Disabilities",
+      "description": "Can range from mild to severe or complete loss. Some people have reduced or lack of sensitivity to certain colors, or increased sensitivity to bright colors."
+    }
+  ],
+  "quizQuestions": [
+    {
+      "question": "Not knowing which of two digits is larger, i.e. understanding the meaning of numbers, or lacking effective counting strategies, or even the inability to add simple single-digit numbers mentally are characteristics of which disability?",
+      "options": [
+        "Dyscalculia",
+        "Distractibility",
+        "Dyslexia",
+        "Dysnomia",
+        "Dyspraxia"
+      ],
+      "correctAnswers": [0],
+      "explanation": "Dyscalculia is a specific learning disability that affects a person's ability to understand numbers and learn math facts. It involves an inability to understand arithmetic and how to calculate."
+    },
+    {
+      "question": "Despite having an average IQ, a student struggles to make sense of the words that he reads. He may be considered to have a reading disability called:",
+      "options": [
+        "Dyscalculia",
+        "Dysgraphia",
+        "Dyslexia",
+        "Dysnomia",
+        "Dyspraxia"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Dyslexia is associated with a difficulty in learning to read despite normal IQ."
+    },
+    {
+      "question": "Someone who is easily distracted by sights and sounds, has trouble paying attention, and is impulsive most likely has:",
+      "options": [
+        "Autism Spectrum Disorder",
+        "Neurologic Disability",
+        "Attention Deficit Hyperactivity Disorder",
+        "Intellectual Disability",
+        "Dyspraxia"
+      ],
+      "correctAnswers": [2],
+      "explanation": "ADHD is a developmental problem characterized by distractibility, inattention, hyperactivity, and impulsivity. While people do not outgrow this condition, they do learn to adapt."
+    },
+    {
+      "question": "A person who has substantial hearing loss in combination with 20/200 vision, and as a result uses touch as their primary means of communication MOST likely identifies with which category of disability?",
+      "options": [
+        "Blind",
+        "Deaf",
+        "Hard of hearing",
+        "Deaf-blind"
+      ],
+      "correctAnswers": [3],
+      "explanation": "Deaf-blindness is a rare condition in which an individual has combined hearing and vision loss, thus limiting access to both auditory and visual information."
+    },
+    {
+      "question": "All people with auditory disabilities know sign language.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswers": [1],
+      "explanation": "Not all people with auditory disabilities know sign language. For some people with auditory disabilities, sign language is the primary language, and they may not read the written language as fluently. However, it is important to remember that not all people with auditory disabilities know sign language."
+    },
+    {
+      "question": "Designing a website that does not have blinking, flashing, or flickering content has the MOST benefit for people with which disability?",
+      "options": [
+        "Muscle fatigue",
+        "Epilepsy",
+        "Dyslexia",
+        "Anxiety"
+      ],
+      "correctAnswers": [1],
+      "explanation": "People with epilepsy may have seizures when viewing flashing material on a site. This includes people with photosensitive epilepsy as well as other photosensitive seizure disorders."
+    },
+    {
+      "question": "Cognitive, learning, and neurological disabilities do not necessarily affect the intelligence of a person.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswers": [0],
+      "explanation": "Generally speaking, people with learning disabilities are of average or above average intelligence. There often appears to be a gap between the individual's potential and actual achievement."
+    },
+    {
+      "question": "Which of the following website design solutions are appropriate for a person with cognitive disabilities? (Select three.)",
+      "options": [
+        "Simple reminders, such as 'step 2 of 4'",
+        "Error messages containing clear explanations",
+        "Headings that draw attention to the main topics of information",
+        "Video content that plays on page load"
+      ],
+      "correctAnswers": [0, 1, 2],
+      "explanation": "These design considerations accommodate memory, problem-solving deficits, and attention deficits."
+    },
+    {
+      "question": "Thomas is a twelve year old student who is sighted but colorblind. He is having difficulty understanding a pie chart that shows the number of Mac users versus PC users in his class. He cannot correlate the values in the pie slices with the data series in the legend. In the pie chart, the Mac users are shown as the green slice, and the PC users are shown as the red slice. Identify the solutions that are most helpful to Thomas and that he is likely to use. (Select three.)",
+      "options": [
+        "In the slices, use patterns in addition to color",
+        "In addition to the pie chart, provide a data table",
+        "Describe the pie chart with alternative text",
+        "Label the slices with text boxes"
+      ],
+      "correctAnswers": [0, 1, 3],
+      "explanation": "Using patterns in addition to color allows someone who is colorblind to differentiate the slices. Providing a data table that deconstructs the data visualization into its tabular format and allows a different way of accessing it. Labeling the values of each pie slice would also add a secondary means to decode the information."
+    },
+    {
+      "question": "Alex has worked as a reporter for more than 20 years and has developed a repetitive strain injury that makes it painful to use a mouse and to type for extended periods of time. Though it took considerable research, time, and commitment to learn, he is able to work with less pain using which of the following modifications to his work environment? (Select three.)",
+      "options": [
+        "Use of an ergonomic keyboard",
+        "Large computer screen with high resolution and high luminosity",
+        "Voice recognition software on his computer and mobile phone",
+        "Use of keyboard commands without a mouse"
+      ],
+      "correctAnswers": [0, 2, 3],
+      "explanation": "Use of an ergonomic keyboard can provide relief to pain. Voice recognition software on his computer and mobile phone can limit the amount of manipulation required to operate a computer. And use of keyboard commands without a mouse can reduce the need to engage fine motor skills needed to operate a pointer device."
+    }
+  ]
+}
