@@ -56,7 +56,7 @@ const OverviewDropdown: React.FC<{ overview: FlexibleOverviewData[] }> = ({ over
         <div className="mt-2 bg-white rounded-lg shadow-md p-4">
           {overview.map((item, index) => (
             <div key={index} className="mb-4">
-              <h3 className="font-bold text-lg">{item.model}</h3>
+              <h3 className="font-bold text-lg">{item.category}</h3>
               <p>{item.description}</p>
             </div>
           ))}
