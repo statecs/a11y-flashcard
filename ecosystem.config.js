@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'react-app',
+    name: 'a11y-app',
     script: 'npx',
     args: ['serve', '-s', 'build', '-l', '5080', '--single'],
     instances: 1,
