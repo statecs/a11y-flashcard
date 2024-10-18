@@ -20,6 +20,26 @@
     {
       "question": "What condition is characterized by difficulty with communication, social interactions, obsessive interests, and repetitive behaviors?",
       "answer": "Autism Spectrum Disorder (ASD)"
+    },
+    {
+      "question": "Which group of users benefits most from websites that avoid rapid visual changes such as flashing or flickering content?",
+      "answer": "Individuals with epilepsy"
+    },
+    {
+      "question": "Which category of disability is characterized by difficulty understanding speech, especially in noisy environments, and may include users of hearing aids?",
+      "answer": "Sensory: Auditory"
+    },
+    {
+      "question": "What type of disability encompasses conditions that affect information processing, understanding, or communication, and may include neurodevelopmental disorders?",
+      "answer": "Neurological: Cognitive"
+    },
+    {
+      "question": "Which disability category includes conditions affecting movement, coordination, and physical sensation, such as tremors, paralysis, or missing limbs?",
+      "answer": "Mobility: Physical"
+    },
+    {
+      "question": "What type of disability can involve partial or complete loss of sight, difficulties with color perception, or increased sensitivity to brightness?",
+      "answer": "Sensory: Visual"
     }
   ],
   "overview": [
@@ -175,6 +195,46 @@
       ],
       "correctAnswers": [0, 2, 3],
       "explanation": "Use of an ergonomic keyboard can provide relief to pain. Voice recognition software on his computer and mobile phone can limit the amount of manipulation required to operate a computer. And use of keyboard commands without a mouse can reduce the need to engage fine motor skills needed to operate a pointer device."
+    },
+    {
+      "question": "Can hear sounds but sometimes not sufficiently to understand all speech, especially when there is background noise. This can include people using hearing aids.",
+      "options": [
+        "Auditory",
+        "Cognitive",
+        "Physical",
+        "Visual"
+      ],
+      "correctAnswers": [0]
+    },
+    {
+      "question": "Involves neurodiversity and neurological disorders, as well as behavioral and mental health disorders that are not necessarily neurological. They may affect any part of the nervous system and impact how well people hear, move, see, speak, and understand information.",
+      "options": [
+        "Auditory",
+        "Cognitive",
+        "Physical",
+        "Visual"
+      ],
+      "correctAnswers": [1]
+    },
+    {
+      "question": "Sometimes called motor disabilities, include weakness and limitations of muscular control (such as involuntary movements including tremors, lack of coordination, or paralysis), limitations of sensation, joint disorders (such as arthritis), pain that impedes movement, and missing limbs.",
+      "options": [
+        "Auditory",
+        "Cognitive",
+        "Physical",
+        "Visual"
+      ],
+      "correctAnswers": [2]
+    },
+    {
+      "question": "Can range from mild to severe or complete loss. Some people have reduced or lack of sensitivity to certain colors, or increased sensitivity to bright colors.",
+      "options": [
+        "Auditory",
+        "Cognitive",
+        "Physical",
+        "Visual"
+      ],
+      "correctAnswers": [3]
     }
   ]
 }
