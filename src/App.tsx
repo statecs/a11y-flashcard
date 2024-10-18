@@ -128,7 +128,7 @@ const FlashcardWrapper: React.FC = () => {
 };
 
 const App: React.FC = () => (
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route 
