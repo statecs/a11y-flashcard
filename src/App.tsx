@@ -7,6 +7,7 @@ import Quiz, { QuizQuestion } from './components/Quiz';
 
 import modelsOfDisabilityData from './data/modelsOfDisability.json';
 import categoriesOfDisabilitiesData from './data/categoriesOfDisabilities.json';
+import assistiveTechnologiesAndDisabilitiesData from './data/assistiveTechnologiesAndDisabilities.json';
 
 interface FlexibleOverviewData {
   [key: string]: string;
@@ -36,6 +37,12 @@ const chapters: Chapter[] = [
     title: 'Categories of Disabilities',
     description: 'Learn about different disabilities through interactive flashcards and quiz',
     data: categoriesOfDisabilitiesData as Chapter['data']
+  },
+  {
+    id: 'assistive-technologies-and-disabilities',
+    title: 'Assistive Technologies and Disabilities',
+    description: 'Learn about technologies that help people with disabilities access digital and physical environments.',
+    data: assistiveTechnologiesAndDisabilitiesData as Chapter['data']
   },
 ];
 

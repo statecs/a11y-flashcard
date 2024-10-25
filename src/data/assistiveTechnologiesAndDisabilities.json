@@ -1,0 +1,232 @@
+{
+  "title": "Assistive Technologies and Disabilities",
+  "cards": [
+    {
+      "question": "What technology would a deafblind person use to access screen reader output?",
+      "answer": "Refreshable braille display"
+    },
+    {
+      "question": "Tools such as wands and sticks, electronic pointing devices, and sip-and-puff systems, which are designed for people with limited mobility, are classified as which type of devices?",
+      "answer": "Alternative Access Devices"
+    },
+    {
+      "question": "Which is an umbrella term for systems and technologies that assist people who cannot speak with communicating?",
+      "answer": "Augmentative and Alternative Communication"
+    },
+    {
+      "question": "This assistive technology creates an audible track describing visual content in videos. What is it and who is the primary audience?",
+      "answer": "Audio descriptions for the low-sighted and non-sighted"
+    },
+    {
+      "question": "What is the main difference between open and closed captioning?",
+      "answer": "Open captions are permanent and cannot be turned off"
+    },
+    {
+      "question": "Which assistive technology can both convert speech into text and allow a user to control a computer or mobile device?",
+      "answer": "Voice recognition"
+    },
+    {
+      "question": "What is an example of voice recognition technology?",
+      "answer": "Dragon Home"
+    },
+    {
+      "question": "Which disability type benefits MOST from large format print?",
+      "answer": "Vision"
+    },
+    {
+      "question": "Which disability type benefits MOST from ergonomic design of consumer and industrial products?",
+      "answer": "Mobility"
+    },
+    {
+      "question": "Which disability type benefits MOST from videoconferencing?",
+      "answer": "Hearing"
+    }
+
+  ],
+  "overview": [
+    {
+      "category": "Screen Reading Technologies",
+      "description": "Technologies that convert on-screen information into different formats accessible to users with various disabilities. Screen readers convert text to speech, refreshable braille displays provide tactile output, screen magnifiers enlarge content, and high contrast modes enhance visibility."
+    },
+    {
+      "category": "Alternative Communication",
+      "description": "Systems and technologies that assist people who are unable to use traditional communication methods. These include AAC devices, text-to-speech software, communication boards, and sign language interpretation technology."
+    },
+    {
+      "category": "Physical Accessibility Tools",
+      "description": "Devices and technologies that assist with physical interaction and mobility. Includes adaptive keyboards and mice, eye tracking controls, switch devices, mobility aids and prosthetics."
+    },
+    {
+      "category": "Cognitive Support Tools",
+      "description": "Technologies that assist with processing, learning, and organizing information. Examples include word prediction software, organizational apps, reading assistance tools, and math computation aids."
+    },
+    {
+      "category": "Sensory Adaptation Tools",
+      "description": "Technologies that modify or enhance sensory input for better accessibility. These include hearing aids and cochlear implants, color contrast adjustment tools, audio description systems, and haptic feedback devices."
+    },
+    {
+      "category": "Environmental Accessibility",
+      "description": "Modifications and systems that make physical and digital environments more accessible. Includes navigation aids, tactile markers, sound field systems, and flicker-free displays."
+    },
+    {
+      "category": "Wellness and Safety",
+      "description": "Technologies that support health monitoring and emergency response. Examples include seizure detection devices, mood tracking apps, service animal support equipment, and emergency alert systems."
+    }
+  ],
+  "quizQuestions": [
+    {
+      "question": "Which statements explain the main differences between screen magnifiers and screen readers? (Select two)",
+      "options": [
+        "Screen magnifiers are primarily for the low-sighted and screen readers are primarily for the non-sighted",
+        "Screen magnifiers enlarge the content on a screen, while screen readers speak the content aloud",
+        "Screen magnifiers interfere with the proper usage of a screen reader",
+        "Screen magnifiers are not available on mobile devices but screen readers are"
+      ],
+      "correctAnswers": [0, 1],
+      "explanation": "Screen magnifiers and screen readers serve different purposes - magnification for low vision users and audio output for blind users"
+    },
+    {
+      "question": "Which assistive technology would a deafblind person use to access a screen reader's conversion of on-screen information to text?",
+      "options": [
+        "Haptic alerts and feedback",
+        "Tactile sign language",
+        "Screen magnifier",
+        "Refreshable braille display"
+      ],
+      "correctAnswers": [3],
+      "explanation": "Screen magnifiers and screen readers serve different purposes - magnification for low vision users and audio output for blind users"
+    },
+    {
+      "question": "In a train station or airport, which types of disabilities would MOST benefit from a combination of text-based and audio alerts? (select three)",
+      "options": [
+        "Vision disabilities",
+        "Hearing disabilities",
+        "Mobility disabilities",
+        "Cognitive disabilities"
+      ],
+      "correctAnswers": [0, 1, 3],
+      "explanation": "Multiple formats help ensure information is accessible to people with different types of disabilities"
+    },
+    {
+      "question": "Tools such as wands and sticks, electronic pointing devices, and sip-and-puff systems, which are designed for people with limited mobility, are classified as which type of devices?",
+      "options": [
+        "Information and Communication Access Devices",
+        "Assistive Mobility Devices",
+        "Alternative Access Devices",
+        "Augmentative and Alternative Communication Devices"
+      ],
+      "correctAnswers": [2],
+      "explanation": "These are Alternative Access Devices as they provide alternate methods to control computers and devices"
+    },
+    {
+      "question": "Which is an umbrella term for systems and technologies that assist people who cannot speak with communicating?",
+      "options": [
+        "Audio captioning",
+        "Screen reader",
+        "Voice recognition",
+        "Augmentative and Alternative Communication"
+      ],
+      "correctAnswers": [3],
+      "explanation": "Augmentative and Alternative Communication (AAC) encompasses all methods and technologies used to supplement or replace speech."
+    },
+    {
+     "question": "While attempting to log into a banking website and being directed to call customer service, which types of disabilities would MOST benefit from text-based alternatives for communication? (Select two)",
+      "options": [
+        "Auditory disabilities",
+        "Speech disabilities",
+        "Mobility disabilities",
+        "Vision disabilities"
+      ],
+      "correctAnswers": [0, 1],
+      "explanation": "People with auditory and speech disabilities may find it difficult to communicate through traditional phone calls."
+    },
+    {
+      "question": "This assistive technology creates an audible track describing visual content in videos. What is it and who is the primary audience?",
+      "options": [
+        "Audio descriptions for the low-sighted and non-sighted",
+        "Text transcripts for the low-sighted and non-sighted",
+        "Closed captions for the deaf and hard-of-hearing",
+        "Open captions for the deaf and hard-of-hearing"
+      ],
+      "correctAnswers": [0],
+      "explanation": "Audio Description (AD) provides narration of visual elements for blind or low vision users."
+    },
+    {
+      "question": "What is the main difference between open and closed captioning?",
+      "options": [
+        "Open captions are permanent and cannot be turned off",
+        "Open captions are only available in certain languages",
+        "Open captions are only for educational content",
+        "Open captions require special software to view"
+      ],
+      "correctAnswers": [0],
+      "explanation": "Open captions are permanently embedded in the video and cannot be toggled on or off"
+    },
+    {
+      "question": "Which groups can benefit from video closed captions and transcripts besides people with auditory disabilities?",
+      "options": [
+        "People who speak English as a second language",
+        "People with no vision or low vision",
+        "People with learning disabilities",
+        "People with physical disabilities"
+      ],
+      "correctAnswers": [0, 2],
+      "explanation": "Captions can help ESL learners and those with learning disabilities by providing visual reinforcement of spoken content"
+    },
+    {
+      "question": "Which assistive technology can both convert speech into text and allow a user to control a computer or mobile device?",
+      "options": [
+        "Voice recognition",
+        "Audio captioning",
+        "Augmentative and Alternative Communication",
+        "Screen reader"
+      ],
+      "correctAnswers": [0],
+      "explanation": "Voice recognition technology allows for hands-free dictation and computer control through voice commands."
+    },
+    {
+      "question": "What is an example of voice recognition technology?",
+      "options": [
+        "Dragon Home",
+        "JAWS",
+        "Read and Write Gold",
+        "Refreshable braille display"
+      ],
+      "correctAnswers": [0],
+      "explanation": "Dragon Home is a speech recognition software that converts speech to text and enables hands-free computer control."
+    },
+    {
+      "question": "Which disability type benefits MOST from large format print?",
+      "options": [
+        "Vision",
+        "Hearing",
+        "Mobility",
+        "Cognition"
+      ],
+      "correctAnswers": [0],
+      "explanation": "Large format print makes text easier to see and read for users with low vision."
+    },
+    {
+      "question": "Which disability type benefits MOST from ergonomic design of consumer and industrial products?",
+      "options": [
+        "Vision",
+        "Hearing",
+        "Mobility",
+        "Cognition"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Ergonomic design assists users with mobility disabilities by considering their physical capabilities and limitations."
+    },
+    {
+      "question": "Which disability type benefits MOST from videoconferencing?",
+      "options": [
+        "Vision",
+        "Hearing",
+        "Mobility",
+        "Cognition"
+      ],
+      "correctAnswers": [1],
+      "explanation": "Videoconferencing allows users who are hearing impaired to communicate through sign language or lip reading."
+    }
+  ]
+}
