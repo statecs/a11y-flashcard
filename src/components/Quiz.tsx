@@ -46,6 +46,9 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
+  // Add this new state to store answers for each question
+  const [answersHistory, setAnswersHistory] = useState<number[][]>([]);
+
 
   useEffect(() => {
     const shuffledQuestions = shuffleArray(initialQuestions);
@@ -63,47 +66,58 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
     });
   };
 
-  const handleNext = () => {
-    if (selectedAnswers.length > 0) {
-      const currentQuestionData = questions[currentQuestion];
-      
-      // Check if selected answers exactly match correct answers
-      const isExactMatch = 
-        selectedAnswers.length === currentQuestionData.correctAnswerIndices.length &&
-        selectedAnswers.every(answer => 
-          currentQuestionData.correctAnswerIndices.includes(answer)
-        );
-      
-      // Award 1 point only for exact matches
-      if (isExactMatch) {
-        setScore(score + 1);
-      }
-
-      setSelectedAnswers([]);
-      if (currentQuestion < questions.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
-      } else {
-        setQuizCompleted(true);
-      }
+// Modify handleNext to save answers before moving to next question
+const handleNext = () => {
+  if (selectedAnswers.length > 0) {
+    const currentQuestionData = questions[currentQuestion];
+    
+    // Save current answers to history
+    setAnswersHistory(prev => {
+      const newHistory = [...prev];
+      newHistory[currentQuestion] = selectedAnswers;
+      return newHistory;
+    });
+    
+    // Check if selected answers exactly match correct answers
+    const isExactMatch = 
+      selectedAnswers.length === currentQuestionData.correctAnswerIndices.length &&
+      selectedAnswers.every(answer => 
+        currentQuestionData.correctAnswerIndices.includes(answer)
+      );
+    
+    if (isExactMatch) {
+      setScore(score + 1);
     }
-  };
 
-  const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-      setSelectedAnswers([]);
-    }
-  };
-
-  const restartQuiz = () => {
-    const shuffledQuestions = shuffleArray(initialQuestions);
-    const randomizedQuestions = shuffledQuestions.map(randomizeQuestion);
-    setQuestions(randomizedQuestions);
-    setCurrentQuestion(0);
     setSelectedAnswers([]);
-    setScore(0);
-    setQuizCompleted(false);
-  };
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setQuizCompleted(true);
+    }
+  }
+};
+
+// Modify handlePrevious to restore previous answers from history
+const handlePrevious = () => {
+  if (currentQuestion > 0) {
+    const previousQuestionIndex = currentQuestion - 1;
+    setCurrentQuestion(previousQuestionIndex);
+    setSelectedAnswers(answersHistory[previousQuestionIndex] || []);
+  }
+};
+
+// Modify restartQuiz to also reset the answers history
+const restartQuiz = () => {
+  const shuffledQuestions = shuffleArray(initialQuestions);
+  const randomizedQuestions = shuffledQuestions.map(randomizeQuestion);
+  setQuestions(randomizedQuestions);
+  setCurrentQuestion(0);
+  setSelectedAnswers([]);
+  setScore(0);
+  setQuizCompleted(false);
+  setAnswersHistory([]); // Add this line
+};
 
   if (quizCompleted) {
     return (
