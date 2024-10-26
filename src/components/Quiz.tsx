@@ -174,20 +174,27 @@ const restartQuiz = () => {
         </div>
       </div>
       <div className="flex justify-between w-full max-w-lg mt-6">
-        <button
-          onClick={handlePrevious}
-          disabled={currentQuestion === 0}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button
-          onClick={handleNext}
-          disabled={selectedAnswers.length === 0}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
-        >
-          <ChevronRight size={24} />
-        </button>
+      <div>
+        {currentQuestion !== 0 && (
+          <button
+            onClick={handlePrevious}
+            className="bg-blue-500 hover:bg-blue-700 text-white flex font-bold py-2 pl-2 pr-4 rounded disabled:opacity-50"
+          > 
+            <ChevronLeft size={24} />
+            Back
+          </button>
+        )}
+      </div>
+      <div>
+        {selectedAnswers.length > 0 && (
+          <button
+            onClick={handleNext}
+            className="bg-blue-500 hover:bg-blue-700 flex text-white font-bold py-2 pl-4 pr-2 rounded"
+          > Next
+            <ChevronRight size={24} />
+          </button>
+        )}
+        </div>
       </div>
     </div>
   );
