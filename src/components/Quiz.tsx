@@ -155,7 +155,7 @@ const restartQuiz = () => {
           Back to Start
         </button>
       </div>
-      <h1 className="text-3xl font-bold mb-8">{title} - Quiz</h1>
+      <h1 className="text-xl md:text-3xl font-bold mb-8">{title} - Quiz</h1>
       <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold mb-4">Question {currentQuestion + 1} of {questions.length}</h2>
         <p className="mb-4">{questions[currentQuestion].question}</p>
