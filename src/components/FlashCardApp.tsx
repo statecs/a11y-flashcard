@@ -70,6 +70,36 @@ const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview, onBack
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [flipped, setFlipped] = useState<boolean>(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+    // Required distance between touchStart and touchEnd to be detected as a swipe
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e: React.TouchEvent) => {
+      setTouchEnd(null);
+      setTouchStart(e.targetTouches[0].clientX);
+    };
+  
+    const onTouchMove = (e: React.TouchEvent) => {
+      setTouchEnd(e.targetTouches[0].clientX);
+    };
+  
+    const onTouchEnd = () => {
+      if (!touchStart || !touchEnd) return;
+      
+      const distance = touchStart - touchEnd;
+      const isLeftSwipe = distance > minSwipeDistance;
+      const isRightSwipe = distance < -minSwipeDistance;
+      
+      if (isLeftSwipe) {
+        nextCard();
+      }
+      if (isRightSwipe) {
+        prevCard();
+      }
+    };
+
 
   const nextCard = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
@@ -107,7 +137,10 @@ const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview, onBack
   }, []);  // Empty dependency array means this effect runs once on mount and clean up on unmount
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start p-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start p-4"
+    onTouchStart={onTouchStart}
+    onTouchMove={onTouchMove}
+    onTouchEnd={onTouchEnd}>
     <div className="w-full max-w-lg mb-4">
       <button
         onClick={onBack}
