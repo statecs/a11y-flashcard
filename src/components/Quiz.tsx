@@ -66,15 +66,18 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
   const handleNext = () => {
     if (selectedAnswers.length > 0) {
       const currentQuestionData = questions[currentQuestion];
-      const correctCount = selectedAnswers.filter(answer => 
-        currentQuestionData.correctAnswerIndices.includes(answer)
-      ).length;
-      const incorrectCount = selectedAnswers.length - correctCount;
-      const totalCorrect = currentQuestionData.correctAnswerIndices.length;
       
-      // Calculate score: 1 point for all correct, minus 0.5 for each incorrect
-      const questionScore = Math.max(0, correctCount - (incorrectCount * 0.5));
-      setScore(score + questionScore);
+      // Check if selected answers exactly match correct answers
+      const isExactMatch = 
+        selectedAnswers.length === currentQuestionData.correctAnswerIndices.length &&
+        selectedAnswers.every(answer => 
+          currentQuestionData.correctAnswerIndices.includes(answer)
+        );
+      
+      // Award 1 point only for exact matches
+      if (isExactMatch) {
+        setScore(score + 1);
+      }
 
       setSelectedAnswers([]);
       if (currentQuestion < questions.length - 1) {
@@ -106,7 +109,7 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
     return (
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
         <h1 className="text-3xl font-bold mb-8">{title} - Quiz Completed</h1>
-        <p className="text-xl mb-4">Your score: {score.toFixed(1)} out of {questions.length}</p>
+        <p className="text-xl mb-4">Your score: {score} out of {questions.length}</p>
         <button
           onClick={restartQuiz}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
