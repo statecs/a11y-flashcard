@@ -1,0 +1,124 @@
+{
+  "title": "Demographics and Statistics",
+  "cards": [
+  ],
+  "overview": [
+    {
+      "category": "Global Population Statistics",
+      "description": "Over 1 billion people (15% of world population) live with disabilities, making them the world's largest minority group, 80% of persons with disabilities live in developing countries, Women report higher incidents of disability than men, In countries with life expectancies over 70 years, individuals spend about 8 years (11.5% of lifespan) living with disabilities"
+    },
+    {
+      "category": "Education",
+      "description": "90% of children with disabilities in developing countries do not attend school, Global literacy rate for adults with disabilities is 3% overall, Global literacy rate for women with disabilities is 1%, Students with disabilities remain under-represented in higher education"
+    },
+    {
+      "category": "Poverty and Employment",
+      "description": "20% of the world's poorest people have some kind of disability, Unemployment among persons with disabilities reaches 80% in some countries, Systemic barriers lead to social exclusion and limited societal participation, Limited access to education, housing, food, water, sanitation, healthcare, and credit"
+    },
+    {
+      "category": "United States Statistics",
+      "description": "26% overall prevalence rate of adults with disabilities, Approximately 61 million adults have some type of disability"
+    },
+    {
+      "category": "Visual Impairment",
+      "description": "More than 285 million people are visually impaired, 90% of visually impaired people live in developing countries, 80% of visual impairments are curable, Main causes include cataracts (47.9%), glaucoma (12.3%), and age-related macular degeneration (8.7%)"
+    }
+  ],
+  "quizQuestions": [
+    {
+      "question": "Poor people are more at risk of acquiring a disability due to a lack of which of the following factors? (Select three.)",
+      "options": [
+        "Accessibility standards",
+        "Health care",
+        "Sanitation",
+        "Safe environments"
+      ],
+      "correctAnswers": [1, 2, 3],
+      "explanation": "The two-way link between poverty and disability creates a vicious circle. Once this occurs, people face barriers to the education, employment, and public services that can help them escape poverty."
+    },
+    {
+      "question": "While the World Health Organization estimates that 15% of the world has a disability, the number of people who experience significant difficulties in functioning is",
+      "options": [
+        "5 - 10 %",
+        "10 - 12 %",
+        "less than 1%",
+        "2 - 4 %"
+      ],
+      "correctAnswers": [3],
+      "explanation": "According to the World Health Survey around 785 million (15.6%) persons 15 years and older live with a disability, while the Global Burden of Disease estimates a figure of around 975 million (19.4%) persons. Of these, the World Health Survey estimates that 110 million people have very significant difficulties in functioning, while the Global Burden of Disease estimates that 190 million have severe disability"
+    },
+    {
+      "question": "Of the 39 million people in the world that are blind, the vast majority",
+      "options": [
+        "Have glaucoma",
+        "Become blind by the age of 10",
+        "Have an incurable disease",
+        "Are over age 50"
+      ],
+      "correctAnswers": [3],
+      "explanation": "The prevalence of disability increases with age according to the section on Aging and Disability"
+    },
+    {
+      "question": "According the WHO, cataracts account for half of all cases of blindness in the world. The second leading cause is",
+      "options": [
+        "Glaucoma",
+        "Diabetic retinopathy",
+        "Corneal opacities",
+        "Age-related macular degeneration"
+      ],
+      "correctAnswers": [0],
+      "explanation": "This disease damages the optic nerve from fluid build up."
+    },
+    {
+      "question": "While around 15% of people in the world have some type of disability, the percentage of adults in the U.S. with a disability is around",
+      "options": [
+        "8%",
+        "13%",
+        "26%",
+        "31%"
+      ],
+      "correctAnswers": [2],
+      "explanation": "61 million American adults have some type of disability."
+    },
+    {
+     "question": "According to the United Nations Factsheet on Persons with Disabilities, about 80% of persons with disabilities live in developing countries. Which of the following are other key statistics? (Select three.)",
+      "options": [
+        "In most OECD countries, women report higher incidents of disability than men",
+        "Unemployment among the persons with disabilities is as high as 20% in some countries",
+        "90% of children with disabilities in developing countries do not attend school",
+        "The global literacy rate for adults with disabilities is as low as 3%, and 1% for women with disabilities"
+      ],
+      "correctAnswers": [0, 2, 3],
+      "explanation": ""
+    },
+    {
+      "question": "People with disabilities make up the world's largest minority group.",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "correctAnswers": [0],
+      "explanation": "As people age they are more likely to acquire a disability"
+    },
+    {
+      "question": "Disability accentuates poverty because the systemic institutional, environmental, and attitudinal barriers that people with disabilities encounter in their daily lives result in their entrenched social exclusion and their lack of participation in society. Which further problems are caused by their exclusion? (Select two.)",
+      "options": [
+        "Diverse economic experience",
+        "Insufficient access to education, housing, food, water, sanitation, and healthcare",
+        "Lack of preparation for and meaningful inclusion in the workforce",
+        "Increased institutional opportunities"
+      ],
+      "correctAnswers": [1, 2],
+      "explanation": "Exclusion of people with disabilities leads to discrimination, lack of adequate access to basic necessities, and the lack of ability to participate in society and the workforce."
+    },
+    {
+      "question": "Cataract is an incurable eye disease that account for 51% of cases of blindness in the world.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswers": [0],
+      "explanation": "Of the more than 36 million people worldwide suffering from unnecessary blindness, more than half are due to cataract – which can be surgically treated."
+    }
+  ]
+}

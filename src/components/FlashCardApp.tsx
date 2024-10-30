@@ -138,50 +138,56 @@ const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview, onBack
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start p-4"
-    onTouchStart={onTouchStart}
-    onTouchMove={onTouchMove}
-    onTouchEnd={onTouchEnd}>
-    <div className="w-full max-w-lg mb-4">
-      <button
-        onClick={onBack}
-        className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center"
-      >
-        <ArrowLeft size={24} className="mr-2" />
-        Back to Start
-      </button>
-    </div>
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}>
+      <div className="w-full max-w-lg mb-4">
+        <button
+          onClick={onBack}
+          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center"
+        >
+          <ArrowLeft size={24} className="mr-2" />
+          Back to Start
+        </button>
+      </div>
       <h1 className="text-3xl font-bold mb-8">{title}</h1>
-      <div className="w-full max-w-lg" ref={cardRef}>
-        <FlashcardComponent 
-          card={cards[currentIndex]} 
-          flipped={flipped} 
-          onClick={() => setFlipped(!flipped)} 
-        />
-      </div>
-      <div className="flex justify-between w-full max-w-lg mt-6">
-        <button 
-          onClick={prevCard} 
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          aria-label="Previous card"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button 
-          onClick={resetCards} 
-          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
-          aria-label="Reset cards"
-        >
-          <RotateCcw size={24} />
-        </button>
-        <button 
-          onClick={nextCard} 
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          aria-label="Next card"
-        >
-          <ChevronRight size={24} />
-        </button>
-      </div>
-      <p className="mt-4 text-gray-600" aria-live="polite">Card {currentIndex + 1} of {cards.length}</p>
+      {cards.length > 0 ? (
+        <>
+          <div className="w-full max-w-lg" ref={cardRef}>
+            <FlashcardComponent 
+              card={cards[currentIndex]} 
+              flipped={flipped} 
+              onClick={() => setFlipped(!flipped)} 
+            />
+          </div>
+          <div className="flex justify-between w-full max-w-lg mt-6">
+            <button 
+              onClick={prevCard} 
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              aria-label="Previous card"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button 
+              onClick={resetCards} 
+              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+              aria-label="Reset cards"
+            >
+              <RotateCcw size={24} />
+            </button>
+            <button 
+              onClick={nextCard} 
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              aria-label="Next card"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+          <p className="mt-4 text-gray-600" aria-live="polite">Card {currentIndex + 1} of {cards.length}</p>
+        </>
+      ) : (
+        <p className="text-gray-600">No flashcards available.</p>
+      )}
       {overview && <OverviewDropdown overview={overview} />}
     </div>
   );

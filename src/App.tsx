@@ -8,6 +8,7 @@ import Quiz, { QuizQuestion } from './components/Quiz';
 import modelsOfDisabilityData from './data/modelsOfDisability.json';
 import categoriesOfDisabilitiesData from './data/categoriesOfDisabilities.json';
 import assistiveTechnologiesAndDisabilitiesData from './data/assistiveTechnologiesAndDisabilities.json';
+import demographicsAndStatistics from './data/demographicsAndStatistics.json';
 
 interface FlexibleOverviewData {
   [key: string]: string;
@@ -43,6 +44,12 @@ const chapters: Chapter[] = [
     title: 'Assistive Technologies and Disabilities',
     description: 'Learn about technologies that help people with disabilities access digital and physical environments.',
     data: assistiveTechnologiesAndDisabilitiesData as Chapter['data']
+  },
+  {
+    id: 'demographics-and-statistics',
+    title: 'Demographics and Statistics',
+    description: 'Learn about demographics and statistics - One in seven people worldwide lives with a disability, making it the worlds largest minority group,',
+    data: demographicsAndStatistics as Chapter['data']
   },
 ];
 
