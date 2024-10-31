@@ -1,6 +1,42 @@
 {
   "title": "Demographics and Statistics",
   "cards": [
+    {
+      "question": "What percentage of the worlds population lives with disabilities?",
+      "answer": "15%"
+    },
+    {
+      "question": "Where do 80% of persons with disabilities reside?",
+      "answer": "Developing countries"
+    },
+    {
+      "question": "In most OECD countries, which gender reports higher incidents of disability?",
+      "answer": "Women"
+    },
+    {
+      "question": "What percentage of children with disabilities in developing countries do not attend school?",
+      "answer": "90%"
+    },
+    {
+      "question": "What is the global literacy rate for adults with disabilities?",
+      "answer": "3% overall, and 1% for women with disabilities"
+    },
+    {
+      "question": "Are students with disabilities over- or under-represented in higher education?",
+      "answer": "Under-represented"
+    },
+    {
+      "question": "What is the unemployment rate among persons with disabilities in some countries?",
+      "answer": "As high as 80%"
+    },
+    {
+      "question": "According to the World Bank, what percentage of the world's poorest people have some form of disability?",
+      "answer": "20%"
+    },
+    {
+      "question": "How many people globally are visually impaired, and what are the three main causes of blindness?",
+      "answer": "285 million; cataract, glaucoma, and age-related macular degeneration"
+    }
   ],
   "overview": [
     {
