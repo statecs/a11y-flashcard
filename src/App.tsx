@@ -9,6 +9,7 @@ import modelsOfDisabilityData from './data/modelsOfDisability.json';
 import categoriesOfDisabilitiesData from './data/categoriesOfDisabilities.json';
 import assistiveTechnologiesAndDisabilitiesData from './data/assistiveTechnologiesAndDisabilities.json';
 import demographicsAndStatistics from './data/demographicsAndStatistics.json';
+import disabilityEtiquette from './data/disabilityEtiquette.json';
 
 interface FlexibleOverviewData {
   [key: string]: string;
@@ -50,6 +51,12 @@ const chapters: Chapter[] = [
     title: 'Demographics and Statistics',
     description: 'Learn about demographics and statistics - One in seven people worldwide lives with a disability, making it the worlds largest minority group,',
     data: demographicsAndStatistics as Chapter['data']
+  },
+  {
+    id: 'disability-and-etiquette',
+    title: 'Disability and Etiquette',
+    description: 'A comprehensive guide on respectful interaction with people with disabilities',
+    data: disabilityEtiquette as Chapter['data']
   },
 ];
 

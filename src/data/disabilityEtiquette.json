@@ -1,0 +1,144 @@
+{
+  "title": "Disability Etiquette",
+  "overview": [
+    {
+      "category": "Core Principles",
+      "description": "The fundamental message is that people with disabilities are people first, who deserve the same respect as everyone else. This includes recognizing their full humanity, independence, and right to make their own decisions. The principles emphasize treating people with disabilities as individuals who live full, independent lives, work, pay taxes, get married, and participate in all aspects of society. Key points include: 1) Put people first, 2) Focus on the whole person, not attributes of their body, 3) Ask people what their needs are."
+    },
+    {
+      "category": "Key Guidelines",
+      "description": "These guidelines address common misconceptions and promote respectful interaction. They recognize that being blind doesn't mean being deaf, being deaf doesn't mean being blind, using a wheelchair doesn't limit someone's capabilities, and people with disabilities live full, independent lives. The overall guidance emphasizes staying relaxed and natural in interactions while respecting personal space and autonomy. Essential practices include: 1) Focus on the person, not their disability, 2) Look at the person signing, not the interpreter, 3) Ask before helping - don't assume help is needed, 4) Let the person hold your elbow for mobility assistance, 5) Don't touch assistive devices or service animals without permission, 6) Respect that service animals are working animals, 7) Recognize that people with disabilities make their own decisions."
+    },
+    {
+      "category": "Language Guidelines",
+      "description": "The word disability isn't pejorative, but defining someone by attributes of their body is considered demeaning. When communicating about people with disabilities, we should recognize their humanity first and use terms that they prefer. Terms like 'disability' and 'disabled' are generally preferred over 'handicap' or 'crippled'. More 'positive' labels such as 'physically challenged' and 'differently abled' may occasionally be appropriate, although many people with disabilities find such euphemisms offensively trivializing. Important guidelines include: 1) Use people-first language, 2) Avoid defining people by their disabilities, 3) Avoid euphemisms that may trivialize disabilities, 4) Only mention disability when relevant to the context."
+    },
+    {
+      "category": "General Interaction",
+      "description": "The overall guidance is simple: treat people with disabilities the way you would want to be treated. If unsure about how to help, just ask. Stay relaxed and natural in interactions, and focus on the person first. It's important to remember that people with disabilities are individuals who make their own decisions and live independent lives. Key principles include: 1) Treat people as you would want to be treated, 2) Ask if unsure about how to help, 3) Stay relaxed and natural in interactions, 4) Focus on the person first, 5) Respect independence and decision-making."
+    }
+  ],
+  "cards": [
+    {
+      "question": "In general interactions with people with disabilities, is it appropriate to shake hands?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is it acceptable to lean on someone's wheelchair during conversation?",
+      "answer": "No"
+    },
+    {
+      "question": "When helping someone with a disability, should you wait for acceptance and follow their specific requests?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Should you make assumptions about someone's capabilities based on visible or invisible disabilities?",
+      "answer": "No"
+    },
+    {
+      "question": "Is it important to treat adults with disabilities as adults?",
+      "answer": "Yes"
+    },
+    {
+      "question": "When someone has an assistant or service animal, who should you address directly?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is it appropriate to ask personal questions about someone's disability or medical condition?",
+      "answer": "No"
+    },
+    {
+      "question": "Should you be overly concerned about making mistakes in your interactions?",
+      "answer": "No"
+    },
+    {
+      "question": "When speaking with someone in a wheelchair, should you try to maintain eye level?",
+      "answer": "Yes"
+    },
+    {
+      "question": "What is people-first language?",
+      "answer": "Language that avoids defining someone by attributes of their body and aims to avoid perceived and subconscious dehumanization when discussing people with disabilities"
+    },
+    {
+      "question": "Why shouldn't you touch or move someone's wheelchair without permission?",
+      "answer": "Assistive devices are considered an extension of a person's body and personal space"
+    },
+    {
+      "question": "How should you interact with someone who has a speech disability?",
+      "answer": "Be patient, don't interrupt or finish their sentences, ask for clarification if needed, and repeat back what you understood"
+    }
+  ],
+  "quizQuestions": [
+    {
+      "question": "Which of the following statements is a respectful way to describe someone with dyslexia?",
+      "options": [
+        "Person with a learning disability",
+        "A dyslexic",
+        "Person with a handicap",
+        "Person afflicted with dyslexia"
+      ],
+      "correctAnswers": [0],
+      "explanation": "This uses people-first language which puts the person before their disability"
+    },
+    {
+      "question": "What is the BEST reason to avoid placing your hands on a person's wheelchair without permission?",
+      "options": [
+        "Moving an assistive device without warning may injure you",
+        "Assistive devices are fragile and can easily break if not handled by an expert",
+        "You should touch the person before you touch their device",
+        "Assistive devices are an extension of a person's body"
+      ],
+      "correctAnswers": [3],
+      "explanation": "Assistive devices are considered to be an extension of a person's body and personal space"
+    },
+    {
+      "question": "Don't ask personal or medical questions, such as if they were born with a disability or any other personal details, unless they bring it up first.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswers": [0]
+    },
+    {
+      "question": "What is the BEST course of action if you don't understand what someone with a speech disability has said?",
+      "options": [
+        "Gesture with your hands and shake your head",
+        "Hand them paper and pen to write it down",
+        "Smile politely and pretend you understand",
+        "Repeat back as much as you could understand and ask for clarification"
+      ],
+      "correctAnswers": [3],
+      "explanation": "Repeating back and asking for clarification allows better understanding without being patronizing"
+    },
+    {
+      "question": "Evaluate the following sentence: Debbie Stevens, a blind seventh grader at Riverview Junior High, won third prize in the county public-speaking competition. Which word should be removed from the sentence to make it more acceptable?",
+      "options": [
+        "Blind",
+        "Seventh",
+        "Price",
+        "High"
+      ],
+      "correctAnswers": [0]
+    },
+    {
+      "question": "Evaluate the following two statements: Paraplegic James Alton competes in marathons with other crippled racers who train in wheelchairs. James Alton, an attorney whose legs were paralyzed in an automobile accident, competes in marathons with other disabled racers who train in wheelchairs. What makes the second statement more acceptable than the first statement? (Select three.)", 
+      "options": [
+        "Mentioning paralysis is germane to the topic of training in wheelchairs",
+        "Removes the word paraplegic",
+        "Removes the word crippled",
+        "Adds the word attorney"
+      ],
+      "correctAnswers": [0, 1, 2]
+    },
+    {
+      "question": "Why are the terms 'confined' and 'bound' to a wheelchair something to avoid? (Select two.)", 
+      "options": [
+        "Not all wheelchairs strap users in",
+        "Wheelchair users can get out of their wheelchairs",
+        "Wheelchairs are liberating, not confining",
+        "Confined and bound imply suffering"
+      ],
+      "correctAnswers": [2, 3]
+    }
+  ]
+}
