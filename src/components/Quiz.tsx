@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowLeft, CheckCircle2, XCircle } from 'lucide-react';
 
 export interface QuizQuestion {
   question: string;
   options: string[];
   correctAnswers: number[];
+  explanation?: string;
 }
 
 interface RandomizedQuizQuestion extends QuizQuestion {
@@ -42,82 +43,69 @@ const randomizeQuestion = (question: QuizQuestion): RandomizedQuizQuestion => {
 
 const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack }) => {
   const [questions, setQuestions] = useState<RandomizedQuizQuestion[]>([]);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
-  const [score, setScore] = useState(0);
-  const [quizCompleted, setQuizCompleted] = useState(false);
-  // Add this new state to store answers for each question
-  const [answersHistory, setAnswersHistory] = useState<number[][]>([]);
-
-
+  const [score, setScore] = useState<number>(0);
+  const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
+  const [showFeedback, setShowFeedback] = useState<boolean>(false);
+  
   useEffect(() => {
     const shuffledQuestions = shuffleArray(initialQuestions);
     const randomizedQuestions = shuffledQuestions.map(randomizeQuestion);
     setQuestions(randomizedQuestions);
   }, [initialQuestions]);
 
-  const handleAnswerSelect = (index: number) => {
-    setSelectedAnswers(prev => {
-      if (prev.includes(index)) {
-        return prev.filter(i => i !== index);
-      } else {
-        return [...prev, index];
-      }
-    });
+  const getRequiredSelectionsText = (question: RandomizedQuizQuestion): string => {
+    const count = question.correctAnswerIndices.length;
+    return count > 1 ? `(Select ${count} answers)` : '';
   };
 
-// Modify handleNext to save answers before moving to next question
-const handleNext = () => {
-  if (selectedAnswers.length > 0) {
+  const handleAnswerSelect = (index: number): void => {
+    if (!showFeedback) {
+      setSelectedAnswers(prev => {
+        // Toggle selection
+        return prev.includes(index)
+          ? prev.filter(i => i !== index)
+          : [...prev, index];
+      });
+    }
+  };
+
+  const handleCheckAnswers = (): void => {
+    setShowFeedback(true);
     const currentQuestionData = questions[currentQuestion];
     
-    // Save current answers to history
-    setAnswersHistory(prev => {
-      const newHistory = [...prev];
-      newHistory[currentQuestion] = selectedAnswers;
-      return newHistory;
-    });
-    
     // Check if selected answers exactly match correct answers
-    const isExactMatch = 
+    const isCorrect = 
       selectedAnswers.length === currentQuestionData.correctAnswerIndices.length &&
-      selectedAnswers.every(answer => 
-        currentQuestionData.correctAnswerIndices.includes(answer)
-      );
+      selectedAnswers.every(answer => currentQuestionData.correctAnswerIndices.includes(answer)) &&
+      currentQuestionData.correctAnswerIndices.every(answer => selectedAnswers.includes(answer));
     
-    if (isExactMatch) {
-      setScore(score + 1);
+    if (isCorrect) {
+      setScore(prev => prev + 1);
     }
+  };
 
+  const handleNext = (): void => {
     setSelectedAnswers([]);
+    setShowFeedback(false);
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setQuizCompleted(true);
     }
-  }
-};
+  };
 
-// Modify handlePrevious to restore previous answers from history
-const handlePrevious = () => {
-  if (currentQuestion > 0) {
-    const previousQuestionIndex = currentQuestion - 1;
-    setCurrentQuestion(previousQuestionIndex);
-    setSelectedAnswers(answersHistory[previousQuestionIndex] || []);
-  }
-};
-
-// Modify restartQuiz to also reset the answers history
-const restartQuiz = () => {
-  const shuffledQuestions = shuffleArray(initialQuestions);
-  const randomizedQuestions = shuffledQuestions.map(randomizeQuestion);
-  setQuestions(randomizedQuestions);
-  setCurrentQuestion(0);
-  setSelectedAnswers([]);
-  setScore(0);
-  setQuizCompleted(false);
-  setAnswersHistory([]); // Add this line
-};
+  const restartQuiz = (): void => {
+    const shuffledQuestions = shuffleArray(initialQuestions);
+    const randomizedQuestions = shuffledQuestions.map(randomizeQuestion);
+    setQuestions(randomizedQuestions);
+    setCurrentQuestion(0);
+    setSelectedAnswers([]);
+    setScore(0);
+    setQuizCompleted(false);
+    setShowFeedback(false);
+  };
 
   if (quizCompleted) {
     return (
@@ -144,6 +132,10 @@ const restartQuiz = () => {
     return <div>Loading...</div>;
   }
 
+  const currentQuestionData = questions[currentQuestion];
+  const isCorrectAnswer = (index: number): boolean => 
+    currentQuestionData.correctAnswerIndices.includes(index);
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start p-4">
       <div className="w-full max-w-lg mb-4">
@@ -155,46 +147,83 @@ const restartQuiz = () => {
           Back to Start
         </button>
       </div>
+      
       <h1 className="text-xl md:text-3xl font-bold mb-8">{title} - Quiz</h1>
+      
       <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4">Question {currentQuestion + 1} of {questions.length}</h2>
-        <p className="mb-4">{questions[currentQuestion].question}</p>
-        <div className="space-y-2">
-          {questions[currentQuestion].randomizedOptions.map((option, index) => (
-            <button
-              key={index}
-              onClick={() => handleAnswerSelect(index)}
-              className={`w-full text-left p-2 rounded ${
-                selectedAnswers.includes(index) ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
-              }`}
-            >
-              {option}
-            </button>
-          ))}
+        <h2 className="text-xl font-semibold mb-4">
+          Question {currentQuestion + 1} of {questions.length}
+        </h2>
+        
+        <div className="mb-4">
+          <p className="font-medium">{currentQuestionData.question}</p>
+          <p className="text-sm text-gray-600 mt-1">
+            {getRequiredSelectionsText(currentQuestionData)}
+          </p>
         </div>
-      </div>
-      <div className="flex justify-between w-full max-w-lg mt-6">
-      <div>
-        {currentQuestion !== 0 && (
-          <button
-            onClick={handlePrevious}
-            className="bg-blue-500 hover:bg-blue-700 text-white flex font-bold py-2 pl-2 pr-4 rounded disabled:opacity-50"
-          > 
-            <ChevronLeft size={24} />
-            Back
-          </button>
+        
+        <div className="space-y-2">
+          {currentQuestionData.randomizedOptions.map((option: string, index: number) => {
+            const isSelected = selectedAnswers.includes(index);
+            const isCorrect = isCorrectAnswer(index);
+            
+            let buttonStyle = "w-full text-left p-4 rounded flex justify-between items-center ";
+            
+            if (showFeedback) {
+              if (isCorrect) {
+                buttonStyle += "border-2 border-green-500 bg-green-50";
+              } else if (isSelected) {
+                buttonStyle += "border-2 border-red-500 bg-red-50";
+              } else {
+                buttonStyle += "bg-gray-100";
+              }
+            } else {
+              buttonStyle += isSelected ? "bg-blue-500 text-white" : "bg-gray-200 hover:bg-gray-300";
+            }
+
+            return (
+              <button
+                key={index}
+                onClick={() => handleAnswerSelect(index)}
+                className={buttonStyle}
+                disabled={showFeedback}
+              >
+                <span>{option}</span>
+                {showFeedback && (
+                  isCorrect ? 
+                    <CheckCircle2 className="text-green-500" size={24} /> :
+                    (isSelected && <XCircle className="text-red-500" size={24} />)
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {showFeedback && currentQuestionData.explanation && (
+          <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded">
+            <p className="text-blue-800">{currentQuestionData.explanation}</p>
+          </div>
         )}
       </div>
-      <div>
-        {selectedAnswers.length > 0 && (
+
+      <div className="flex justify-end w-full max-w-lg mt-6">
+        {!showFeedback && selectedAnswers.length > 0 && (
+          <button
+            onClick={handleCheckAnswers}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+          >
+            Check Answers
+          </button>
+        )}
+        {showFeedback && (
           <button
             onClick={handleNext}
             className="bg-blue-500 hover:bg-blue-700 flex text-white font-bold py-2 pl-4 pr-2 rounded"
-          > Next
+          >
+            {currentQuestion === questions.length - 1 ? 'Finish' : 'Next'}
             <ChevronRight size={24} />
           </button>
         )}
-        </div>
       </div>
     </div>
   );
