@@ -13,7 +13,7 @@ const ThemeToggle = () => {
   }[theme];
 
   return (
-    <div className="fixed top-4 right-4 sm:right-6">
+    <div className="fixed top-4 right-4 sm:right-6 z-50">
       <div className="relative">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
