@@ -1,5 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowLeft, CheckCircle2, XCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowLeft, CheckCircle2, XCircle, Trophy, Medal, Star } from 'lucide-react';
+import type { Options as ConfettiOptions } from 'canvas-confetti';
+import confetti from 'canvas-confetti';
+
+// Simplified declaration for canvas-confetti
+declare module 'canvas-confetti' {
+  export interface Options {
+    particleCount?: number;
+    angle?: number;
+    spread?: number;
+    startVelocity?: number;
+    decay?: number;
+    gravity?: number;
+    drift?: number;
+    ticks?: number;
+    origin?: {
+      x?: number;
+      y?: number;
+    };
+    colors?: string[];
+    zIndex?: number;
+  }
+}
 
 export interface QuizQuestion {
   question: string;
@@ -107,23 +129,104 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
     setShowFeedback(false);
   };
 
+  const getScoreMessage = () => {
+    const percentage = (score / questions.length) * 100;
+    if (percentage === 100) {
+      return "🏆 Perfect Score! You're a Star! 🌟";
+    } else if (percentage >= 90) {
+      return "🎯 Almost Perfect! Incredible Job! 🌟";
+    } else if (percentage >= 80) {
+      return "🎨 Great Work! You're Getting There! 💪";
+    } else if (percentage >= 70) {
+      return "📚 Good Effort! Keep Learning! 📖";
+    } else {
+      return "🌱 Room for Growth! Try Again! 🔄";
+    }
+  };
+
+  const triggerConfetti = () => {
+    const duration = 3000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    const randomInRange = (min: number, max: number) => {
+      return Math.random() * (max - min) + min;
+    };
+
+    const interval: any = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+      });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+      });
+    }, 250);
+  };
+
+  useEffect(() => {
+    if (quizCompleted && score === questions.length) {
+      triggerConfetti();
+    }
+  }, [quizCompleted, score]);
+
   if (quizCompleted) {
+    const percentage = (score / questions.length) * 100;
+    const scoreColor = percentage === 100 
+      ? 'text-yellow-500 dark:text-yellow-300'
+      : percentage >= 80 
+        ? 'text-green-500 dark:text-green-300'
+        : 'text-blue-500 dark:text-blue-300';
+
     return (
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center p-4">
         <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">{title} - Quiz Completed</h1>
-        <p className="text-xl mb-4 text-gray-800 dark:text-gray-200">Your score: {score} out of {questions.length}</p>
-        <button
-          onClick={restartQuiz}
-          className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mr-2"
-        >
-          Restart Quiz
-        </button>
-        <button
-          onClick={onBack}
-          className="bg-gray-500 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
-        >
-          Back to Start
-        </button>
+        
+        <div className={`text-4xl mb-6 ${scoreColor} animate-bounce`}>
+          {percentage === 100 ? <Trophy size={64} /> : 
+           percentage >= 90 ? <Medal size={64} /> :
+           percentage >= 80 ? <Star size={64} /> : '🎯'}
+        </div>
+
+        <h2 className={`text-2xl font-bold mb-4 ${scoreColor}`}>
+          {getScoreMessage()}
+        </h2>
+
+        <div className="text-xl mb-8 text-gray-800 dark:text-gray-200">
+          <span className={`text-3xl font-bold ${scoreColor}`}>{score}</span> out of {questions.length} correct!
+        </div>
+
+        <div className="space-y-4">
+          <button
+            onClick={restartQuiz}
+            className="w-full bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg transform transition hover:scale-105"
+          >
+            Try Again 🔄
+          </button>
+          <button
+            onClick={onBack}
+            className="w-full bg-gray-500 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transform transition hover:scale-105"
+          >
+            Back to Start ↩
+          </button>
+        </div>
+
+        {percentage >= 90 && percentage < 100 && (
+          <div className="mt-8 text-center text-gray-600 dark:text-gray-400 animate-pulse">
+            So close to perfection! Give it another shot! 🎯
+          </div>
+        )}
       </div>
     );
   }
