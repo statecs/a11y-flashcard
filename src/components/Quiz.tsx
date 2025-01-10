@@ -136,18 +136,31 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
   const isCorrectAnswer = (index: number): boolean => 
     currentQuestionData.correctAnswerIndices.includes(index);
 
+  // Add progress bar to the top, right after the back button
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-start p-4">
       <div className="w-full max-w-lg mb-4">
         <button
           onClick={onBack}
-          className="bg-gray-500 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 text-white font-bold py-2 px-4 rounded flex items-center"
+          className="bg-gray-500 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 text-white font-bold py-2 px-4 rounded flex items-center mb-4"
         >
           <ArrowLeft size={24} className="mr-2" />
           Back to Start
         </button>
+
+        {/* Progress Bar */}
+        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-4">
+          <div 
+            className="bg-blue-500 dark:bg-blue-600 h-2.5 rounded-full transition-all duration-300 ease-in-out"
+            style={{ 
+              width: `${((currentQuestion + (showFeedback ? 1 : 0)) / questions.length) * 100}%`
+            }}
+          />
+        </div>
+        <div className="text-sm text-gray-600 dark:text-gray-400 text-center">
+          Progress: {currentQuestion + (showFeedback ? 1 : 0)} of {questions.length}
+        </div>
       </div>
-      
       <h1 className="text-xl md:text-3xl font-bold mb-8 text-gray-900 dark:text-white">{title} - Quiz</h1>
       
       <div className="w-full max-w-lg bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
