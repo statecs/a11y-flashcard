@@ -5,6 +5,9 @@ import { BookOpen } from 'lucide-react';
 import FlashcardApp from './components/FlashCardApp';
 import Quiz, { QuizQuestion } from './components/Quiz';
 
+import { ThemeProvider } from './ThemeContext';
+import ThemeToggle from './ThemeToggle';
+
 import modelsOfDisabilityData from './data/modelsOfDisability.json';
 import categoriesOfDisabilitiesData from './data/categoriesOfDisabilities.json';
 import assistiveTechnologiesAndDisabilitiesData from './data/assistiveTechnologiesAndDisabilities.json';
@@ -61,26 +64,26 @@ const chapters: Chapter[] = [
 ];
 
 const LandingPage: React.FC = () => (
-  <div className="min-h-screen bg-gray-100 p-8">
-    <h1 className="text-4xl font-bold mb-8 text-center">A11y Learning Hub</h1>
+  <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-8">
+    <h1 className="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">A11y Learning Hub</h1>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {chapters.map((chapter) => (
-        <div key={chapter.id} className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-semibold mb-2 flex items-center">
+      {chapters.map((chapter) => (
+        <div key={chapter.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+          <h2 className="text-2xl font-semibold mb-2 flex items-center text-gray-900 dark:text-white">
             <BookOpen className="mr-2" size={24} />
             {chapter.title}
           </h2>
-          <p className="text-gray-600 mb-4">{chapter.description}</p>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">{chapter.description}</p>
           <div className="flex space-x-4">
             <Link
               to={`/chapter/${chapter.id}/flashcards`}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
             >
               Flashcards
             </Link>
             <Link
               to={`/chapter/${chapter.id}/quiz`}
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-green-500 hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
             >
               Quiz
             </Link>
@@ -149,20 +152,23 @@ const FlashcardWrapper: React.FC = () => {
 };
 
 const App: React.FC = () => (
-  <Router basename={process.env.PUBLIC_URL}>
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route 
-        path="/chapter/:chapterId/flashcards" 
-        element={<FlashcardWrapper />}
-      />
-      <Route 
-        path="/chapter/:chapterId/quiz" 
-        element={<QuizWrapper />}
-      />
-      <Route path="*" element={<ChapterNotFound />} />
-    </Routes>
-  </Router>
+  <ThemeProvider>
+    <Router basename={process.env.PUBLIC_URL}>
+      <ThemeToggle />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route 
+          path="/chapter/:chapterId/flashcards" 
+          element={<FlashcardWrapper />}
+        />
+        <Route 
+          path="/chapter/:chapterId/quiz" 
+          element={<QuizWrapper />}
+        />
+        <Route path="*" element={<ChapterNotFound />} />
+      </Routes>
+    </Router>
+  </ThemeProvider>
 );
 
 export default App;

@@ -19,7 +19,7 @@ interface FlashcardProps {
 
 const FlashcardComponent: React.FC<{ card: FlashcardData; flipped: boolean; onClick: () => void }> = ({ card, flipped, onClick }) => (
   <div 
-    className={`w-full h-64 bg-white shadow-lg rounded-lg p-6 cursor-pointer transition-all duration-300 transform ${flipped ? 'rotate-y-180' : ''}`} 
+    className={`w-full h-64 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 cursor-pointer transition-all duration-300 transform ${flipped ? 'rotate-y-180' : ''}`} 
     onClick={onClick}
     onKeyDown={(e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -32,10 +32,10 @@ const FlashcardComponent: React.FC<{ card: FlashcardData; flipped: boolean; onCl
     aria-label={flipped ? "Show question" : "Show answer"}
   >
     <div className={`w-full h-full flex items-center justify-center text-center ${flipped ? 'hidden' : ''}`} aria-hidden={flipped}>
-      <p className="text-xl font-semibold">{card.question}</p>
+      <p className="text-xl font-semibold text-gray-900 dark:text-white">{card.question}</p>
     </div>
     <div className={`w-full h-full flex items-center justify-center text-center ${flipped ? '' : 'hidden'}`} aria-hidden={!flipped}>
-      <p className="text-xl">{card.answer}</p>
+      <p className="text-xl text-gray-900 dark:text-white">{card.answer}</p>
     </div>
   </div>
 );
@@ -47,17 +47,17 @@ const OverviewDropdown: React.FC<{ overview: FlexibleOverviewData[] }> = ({ over
     <div className="w-full max-w-lg mt-6">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex justify-between items-center"
+        className="w-full bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded flex justify-between items-center"
       >
         <span>Show Models Overview</span>
         {isOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
       </button>
       {isOpen && (
-        <div className="mt-2 bg-white rounded-lg shadow-md p-4">
+        <div className="mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
           {overview.map((item, index) => (
             <div key={index} className="mb-4">
-              <h3 className="font-bold text-lg">{item.category}</h3>
-              <p className="whitespace-pre-line">{item.description}</p>
+              <h3 className="font-bold text-lg text-gray-900 dark:text-white">{item.category}</h3>
+              <p className="whitespace-pre-line text-gray-700 dark:text-gray-300">{item.description}</p>
             </div>
           ))}
         </div>
@@ -137,20 +137,20 @@ const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview, onBack
   }, []);  // Empty dependency array means this effect runs once on mount and clean up on unmount
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start p-4"
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-start p-4"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}>
       <div className="w-full max-w-lg mb-4">
         <button
           onClick={onBack}
-          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center"
+          className="bg-gray-500 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 text-white font-bold py-2 px-4 rounded flex items-center"
         >
           <ArrowLeft size={24} className="mr-2" />
           Back to Start
         </button>
       </div>
-      <h1 className="text-3xl font-bold mb-8">{title}</h1>
+      <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">{title}</h1>
       {cards.length > 0 ? (
         <>
           <div className="w-full max-w-lg" ref={cardRef}>
@@ -163,34 +163,35 @@ const FlashcardApp: React.FC<FlashcardProps> = ({ cards, title, overview, onBack
           <div className="flex justify-between w-full max-w-lg mt-6">
             <button 
               onClick={prevCard} 
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
               aria-label="Previous card"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={resetCards} 
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-gray-500 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
               aria-label="Reset cards"
             >
               <RotateCcw size={24} />
             </button>
             <button 
               onClick={nextCard} 
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
               aria-label="Next card"
             >
               <ChevronRight size={24} />
             </button>
           </div>
-          <p className="mt-4 text-gray-600" aria-live="polite">Card {currentIndex + 1} of {cards.length}</p>
+          <p className="mt-4 text-gray-600 dark:text-gray-400" aria-live="polite">Card {currentIndex + 1} of {cards.length}</p>
         </>
       ) : (
-        <p className="text-gray-600">No flashcards available.</p>
+        <p className="text-gray-600 dark:text-gray-400">No flashcards available.</p>
       )}
       {overview && <OverviewDropdown overview={overview} />}
     </div>
   );
 };
+
 
 export default FlashcardApp;

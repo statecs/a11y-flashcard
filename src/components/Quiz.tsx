@@ -109,18 +109,18 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
 
   if (quizCompleted) {
     return (
-      <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-        <h1 className="text-3xl font-bold mb-8">{title} - Quiz Completed</h1>
-        <p className="text-xl mb-4">Your score: {score} out of {questions.length}</p>
+      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center p-4">
+        <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">{title} - Quiz Completed</h1>
+        <p className="text-xl mb-4 text-gray-800 dark:text-gray-200">Your score: {score} out of {questions.length}</p>
         <button
           onClick={restartQuiz}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+          className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mr-2"
         >
           Restart Quiz
         </button>
         <button
           onClick={onBack}
-          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-gray-500 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
         >
           Back to Start
         </button>
@@ -137,27 +137,27 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
     currentQuestionData.correctAnswerIndices.includes(index);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start p-4">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-start p-4">
       <div className="w-full max-w-lg mb-4">
         <button
           onClick={onBack}
-          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center"
+          className="bg-gray-500 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 text-white font-bold py-2 px-4 rounded flex items-center"
         >
           <ArrowLeft size={24} className="mr-2" />
           Back to Start
         </button>
       </div>
       
-      <h1 className="text-xl md:text-3xl font-bold mb-8">{title} - Quiz</h1>
+      <h1 className="text-xl md:text-3xl font-bold mb-8 text-gray-900 dark:text-white">{title} - Quiz</h1>
       
-      <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4">
+      <div className="w-full max-w-lg bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
           Question {currentQuestion + 1} of {questions.length}
         </h2>
         
         <div className="mb-4">
-          <p className="font-medium">{currentQuestionData.question}</p>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="font-medium text-gray-900 dark:text-white">{currentQuestionData.question}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
             {getRequiredSelectionsText(currentQuestionData)}
           </p>
         </div>
@@ -171,14 +171,16 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
             
             if (showFeedback) {
               if (isCorrect) {
-                buttonStyle += "border-2 border-green-500 bg-green-50";
+                buttonStyle += "border-2 border-green-500 bg-green-50 dark:bg-green-900/20 dark:text-white";
               } else if (isSelected) {
-                buttonStyle += "border-2 border-red-500 bg-red-50";
+                buttonStyle += "border-2 border-red-500 bg-red-50 dark:bg-red-900/20 dark:text-white";
               } else {
-                buttonStyle += "bg-gray-100";
+                buttonStyle += "bg-gray-100 dark:bg-gray-700";
               }
             } else {
-              buttonStyle += isSelected ? "bg-blue-500 text-white" : "bg-gray-200 hover:bg-gray-300";
+              buttonStyle += isSelected 
+                ? "bg-blue-500 dark:bg-blue-600 text-white" 
+                : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white";
             }
 
             return (
@@ -191,8 +193,8 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
                 <span>{option}</span>
                 {showFeedback && (
                   isCorrect ? 
-                    <CheckCircle2 className="text-green-500" size={24} /> :
-                    (isSelected && <XCircle className="text-red-500" size={24} />)
+                    <CheckCircle2 className="text-green-500 dark:text-green-400" size={24} /> :
+                    (isSelected && <XCircle className="text-red-500 dark:text-red-400" size={24} />)
                 )}
               </button>
             );
@@ -200,8 +202,8 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
         </div>
 
         {showFeedback && currentQuestionData.explanation && (
-          <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded">
-            <p className="text-blue-800">{currentQuestionData.explanation}</p>
+          <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded">
+            <p className="text-blue-800 dark:text-blue-200">{currentQuestionData.explanation}</p>
           </div>
         )}
       </div>
@@ -210,7 +212,7 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
         {!showFeedback && selectedAnswers.length > 0 && (
           <button
             onClick={handleCheckAnswers}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+            className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mr-2"
           >
             Check Answers
           </button>
@@ -218,7 +220,7 @@ const Quiz: React.FC<QuizProps> = ({ questions: initialQuestions, title, onBack 
         {showFeedback && (
           <button
             onClick={handleNext}
-            className="bg-blue-500 hover:bg-blue-700 flex text-white font-bold py-2 pl-4 pr-2 rounded"
+            className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 flex text-white font-bold py-2 pl-4 pr-2 rounded"
           >
             {currentQuestion === questions.length - 1 ? 'Finish' : 'Next'}
             <ChevronRight size={24} />
